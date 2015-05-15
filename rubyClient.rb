@@ -8,29 +8,38 @@ end
 
 def verifyFiles()
 	finding=true
-	i=0;
-	while finding
-		if(File.exist?('logClient'+i+'.log')		
+	i=0
+	while finding do
+		if(File.exist?("logClient"+i+".log"))	
 			i++
 		else
-			return i;
+			return i
 		end
 	end
 end
 
 def verifyDatas(datas,msg)
+	i=0
 	datas.each do |data|
+		logger.info "Checking reply from server"+i
+		logger.info "Reply from server"+i+"= "+data
 		if(data!=msg && data.chomp!=msg)
+			logger.error "Reply receiveid is different than expected"
+			logger.error "Reply: "+data
+			logger.error "Expected reply"+msg
 			return false
 		end
-		
+		i++
 	end
+	logger.error "Everything is ok with the replies from servers"
 	return true
 end
 
-def waitFor(server)
+def waitFor(server,i)
+	logger.error "Waiting server"+i+" reply"
 	server.waitfor(/./) do |data|
 		if(data=="ACK" || data=="OK" || data=="NOK")
+			logger.error "Reply "+data+" received from the server"+i
 			return data
 		end
 	end
@@ -63,19 +72,23 @@ servers=[Net::Telnet::new("Host"=>"localhost","Port" =>Integer(port1),"Telnetmod
 		Net::Telnet::new("Host"=>"localhost","Port" =>Integer(port2),"Telnetmode"=>false),
 		Net::Telnet::new("Host"=>"localhost","Port" =>Integer(port3),"Telnetmode"=>false)]
 
-logger.info "Connection to servers sucessfull"
+logger.info "Connection to servers sucessful"
 
 
 lines_to_send=['Hello!','Send a message','Bye']
 
 lines_to_send.each do |line|
 
-
+	logger.info "Send message \"Change\" to servers"
 	sendMsg(servers,"change")
 
-	data1=waitFor(servers[0])
-	data2=waitFor(servers[1])
-	data3=waitFor(servers[2])
+	data1=waitFor(servers[0],0)
+	data2=waitFor(servers[1],1)
+	data3=waitFor(servers[2],2)
+
+	logger.info "Server 1 reply: "+data1
+	logger.info "Server 2 reply: "+data2
+	logger.info "Server 3 reply: "+data3
 
 	datas=[data1,data2,data3]
 
@@ -83,13 +96,18 @@ lines_to_send.each do |line|
 	puts data2
 	puts data3
 
+	logger.info "Checking if servers reply to change is OK"
 	if(verifyDatas(datas,"OK"))
-
+		logger.info "Send message \"commit\" to servers"
 		sendMsg(servers,"commit")
 
-		data1=waitFor(servers[0])
-		data2=waitFor(servers[1])
-		data3=waitFor(servers[2])
+		data1=waitFor(servers[0],0)
+		data2=waitFor(servers[1],1)
+		data3=waitFor(servers[2],2)
+
+		logger.info "Server 1 reply: "+data1
+		logger.info "Server 2 reply: "+data2
+		logger.info "Server 3 reply: "+data3
 
 		datas=[data1,data2,data3]
 
@@ -97,13 +115,18 @@ lines_to_send.each do |line|
 		puts data2
 		puts data3
 
+		logger.info "Checking if servers reply to commit is OK"
 		if(verifyDatas(datas,"OK"))
-			puts("Sending Data")
+			logger.info "Sending Data "+line+" to servers"
 			sendMsg(servers,"data:"+line)
 
-			data1=waitFor(servers[0])
-			data2=waitFor(servers[1])
-			data3=waitFor(servers[2])
+			data1=waitFor(servers[0],0)
+			data2=waitFor(servers[1],1)
+			data3=waitFor(servers[2],2)
+
+			logger.info "Server 1 reply: "+data1
+			logger.info "Server 2 reply: "+data2
+			logger.info "Server 3 reply: "+data3
 
 			datas=[data1,data2,data3]
 
@@ -111,14 +134,18 @@ lines_to_send.each do |line|
 			puts data2
 			puts data3
 			sleep(1.0/3.0)
-			if(verifyDatas(datas,"NACK"))
+			logger.info "Checking if servers reply to data send is ACK"
+			if(!verifyDatas(datas,"ACK"))
+				logger.info "Servers reply to data send is a NACK, sending abort to servers to cancel commit"
 				sendMsg(servers,"abort")
 			end
 		else
+			logger.info "Servers reply to commit is a NOK,sending abort to servers to cancel commit"
 			puts("Sending Abort")
 			sendMsg(servers,"abort")
 		end
 	else
+		logger.info "Servers reply to commit is a NOK,sending abort to servers to cancel commit"
 		sendMsg(servers,"abort")
 	end
 end
