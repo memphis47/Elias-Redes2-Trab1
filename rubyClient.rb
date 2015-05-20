@@ -9,13 +9,15 @@ end
 def verifyFiles()
 	finding=true
 	i=0
+	puts "To aqui"
 	while finding do
-		if(File.exist?("logClient"+i+".log"))	
-			i++
+		if(File.exist?("logClient"+i.to_s+".log"))	
+			i+=1
 		else
 			return i
 		end
 	end
+	puts "To aqui1"
 end
 
 def verifyDatas(datas,msg)
@@ -29,7 +31,7 @@ def verifyDatas(datas,msg)
 			logger.error "Expected reply"+msg
 			return false
 		end
-		i++
+		i+=1
 	end
 	logger.error "Everything is ok with the replies from servers"
 	return true
@@ -47,8 +49,8 @@ end
 
 fileNumber=verifyFiles()
 
-file= File.open('logClient'+fileNumber+'.log', 
-				File::WRONLY | File::APPEND)
+#file= File.new('logClient'+fileNumber.to_s+'.log', 
+#				"w+")
 logger= Logger.new(file)
 logger.datetime_format="%d-%m-%Y %H:%M:%S"
 logger.formatter = proc do |severity,datetime,progname,msg|
