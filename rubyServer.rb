@@ -14,24 +14,24 @@ loop do
 			puts line.chomp      # And print with platform line terminator
 			if(((line.chomp == "change") || (line == "change")) && ok)
 				puts("Receive Change")
-				client.puts "OK"
+				client.print "OK"
 				ok=false
 			elsif(((line.chomp == "change") || (line == "change")) && !ok)
 				puts("Receive Change but i can't change")
-				client.puts "NOK"
+				client.print "NOK"
 			elsif((line.chomp == "abort") || (line == "abort"))
 				puts("Receive Abort")
-				client.puts "ACK"
+				client.print "ACK"
 				ok=true
 			elsif((line.chomp == "commit") || (line == "commit"))
 				puts("Receive commit")
-				client.puts "OK"
-			elsif((line.include? "data:") || (line.chomp.include? "data:"))
+				client.print "OK"
+			elsif((line.split(":")[0] == "data"))
+				ok=true
+				client.print "OK"
 				puts("Receive data, change data from "+data)
 				dados=line.split("data:")
 				data=dados[1]
-				ok=true
-				client.puts "ACK"
 				puts("To "+data)
 			end
 		end
