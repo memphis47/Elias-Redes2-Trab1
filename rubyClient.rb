@@ -1,5 +1,5 @@
 require 'socket'
-#require 'logging'
+require './log.rb'
 
 NSERVERS=1
 

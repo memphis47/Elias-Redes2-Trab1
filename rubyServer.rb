@@ -1,4 +1,5 @@
 require 'socket'
+require './log.rb'
 
 puts "Digite a porta do servidor"
 port= gets
