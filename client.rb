@@ -61,7 +61,6 @@ end
 def waitFor(server,i)
 	#logger.error "Waiting server"+i+" reply"
 	data= server.recv(800)
-	print data
 	if(data=="ACK" || data=="OK" || data=="NOK")
 		#logger.error "Reply "+data+" received from the server"+i
 		return data
@@ -107,30 +106,30 @@ lines_to_send.each do |line|
 	datas=received(servers)
 
 	#logger.info "Checking if servers reply to change is OK"
-	if(verifyDatas(datas,"OK"))
-		#logger.info "Send message \"commit\" to servers"
-		sendMsg(servers,"commit")
+	# if(verifyDatas(datas,"OK"))
+	# 	#logger.info "Send message \"commit\" to servers"
+	# 	sendMsg(servers,"commit")
 
-		datas=received(servers)
+	# 	datas=received(servers)
 
-		#logger.info "Checking if servers reply to commit is OK"
-		if(verifyDatas(datas,"OK"))
-			#logger.info "Sending Data "+line+" to servers"
-			sendMsg(servers,"data:"+line)
-			datas=received(servers)
+	# 	#logger.info "Checking if servers reply to commit is OK"
+	# 	if(verifyDatas(datas,"OK"))
+	# 		#logger.info "Sending Data "+line+" to servers"
+	# 		sendMsg(servers,"data:"+line)
+	# 		datas=received(servers)
 			
-			#logger.info "Checking if servers reply to data send is ACK"
-			if(!verifyDatas(datas,"OK"))
-				#logger.info "Servers reply to data send is a NACK, sending abort to servers to cancel commit"
-				sendMsg(servers,"abort")
-			end
-		else
-			#logger.info "Servers reply to commit is a NOK,sending abort to servers to cancel commit"
-			puts("Sending Abort")
-			sendMsg(servers,"abort")
-		end
-	else
-		#logger.info "Servers reply to commit is a NOK,sending abort to servers to cancel commit"
-		sendMsg(servers,"abort")
-	end
+	# 		#logger.info "Checking if servers reply to data send is ACK"
+	# 		if(!verifyDatas(datas,"OK"))
+	# 			#logger.info "Servers reply to data send is a NACK, sending abort to servers to cancel commit"
+	# 			sendMsg(servers,"abort")
+	# 		end
+	# 	else
+	# 		#logger.info "Servers reply to commit is a NOK,sending abort to servers to cancel commit"
+	# 		puts("Sending Abort")
+	# 		sendMsg(servers,"abort")
+	# 	end
+	# else
+	# 	#logger.info "Servers reply to commit is a NOK,sending abort to servers to cancel commit"
+	# 	sendMsg(servers,"abort")
+	# end
 end
