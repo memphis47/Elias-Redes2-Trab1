@@ -20,23 +20,23 @@ puts "#{name}:#{port.to_s}"
 
 loop do
 	Thread.start(server.accept) do |client|
-		while line = client.gets   # Read lines from the socket
-			puts line.chomp      # And print with platform line terminator
-			if(((line.chomp == "change") || (line == "change")) && $ok)
+		while line = client.gets.chomp  # Read lines from the socket
+			puts line    			# And print with platform line terminator
+			if(line == "change" && $ok)
 				$ok=false
 				puts("Receive Change")
 				client.print "OK"
-			elsif(((line.chomp == "change") || (line == "change")) && !$ok)
+			elsif(line == "change" && !$ok)
 				puts("Receive Change but i can't change")
 				client.print "NOK"
-			elsif((line.chomp == "abort") || (line == "abort"))
+			elsif(line == "abort")
 				$ok=true
 				puts("Receive Abort")
 				client.print "ACK"
-			elsif((line.chomp == "commit") || (line == "commit"))
+			elsif(line == "commit")
 				puts("Receive commit")
 				client.print "OK"
-			elsif((line.split(":")[0] == "data"))
+			elsif(line.split(":")[0] == "data")
 				$ok=true
 				client.print "OK"
 				puts("Receive data, change data from "+data)
