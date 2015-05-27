@@ -4,13 +4,19 @@ require 'thread'
 
 semaphore = Mutex.new
 
-puts "Digite a porta do servidor"
-port= gets
+# puts "Digite o nome do servidor"
+# name= gets.chomp
 
-server = TCPServer.new("h21",Integer(port))
+name = Socket.gethostname
+
+puts "Digite a porta do servidor"
+port= Integer(gets.chomp)
+
+server = TCPServer.new(name,port)
 
 data="Dado1"
 $ok=true;
+puts "#{name}:#{port.to_s}"
 
 loop do
 	Thread.start(server.accept) do |client|
@@ -36,7 +42,7 @@ loop do
 				puts("Receive data, change data from "+data)
 				dados=line.split("data:")
 				data=dados[1]
-				puts("To "+data)3
+				puts("To "+data)
 			end
 		end
 	end

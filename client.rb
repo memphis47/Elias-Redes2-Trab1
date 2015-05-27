@@ -2,7 +2,6 @@ require 'socket'
 require './log.rb'
 
 class Server
-	
 	def name=(value)
 		@name=value
 	end
