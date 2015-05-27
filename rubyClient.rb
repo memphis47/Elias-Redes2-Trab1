@@ -48,13 +48,6 @@ def waitFor(server,i)
 		#logger.error "Reply "+data+" received from the server"+i
 		return data
 	end
-
-	# server.waitfor(/./) do |data|
-	# 	if(data=="ACK" || data=="OK" || data=="NOK")
-	# 		#logger.error "Reply "+data+" received from the server"+i
-	# 		return data
-	# 	end
-	# end
 end
 
 def received(servers)
