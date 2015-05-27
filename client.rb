@@ -1,6 +1,25 @@
 require 'socket'
 require './log.rb'
 
+class Server
+	
+	def name=(value)
+		@name=value
+	end
+	
+	def port=(value)
+		@port=value
+	end
+
+	def name
+		return @name
+	end
+	
+	def port
+		return @port
+	end
+end
+
 NSERVERS=1
 
 def sendMsg(servers,msg)
@@ -66,11 +85,11 @@ servers=[]
 
 #logger.info "Getting Port for servers"
 NSERVERS.times do |i| 
-
+	servers[i]= Server.new
 	puts "Digite o nome do servidor "+i.to_s
 	servers[i].name=gets.chomp
 
-	puts "Digite a porta do servidor "+serverName[i]
+	puts "Digite a porta do servidor "+servers[i].name
 	servers[i].port=Integer(gets.chomp)
 	#logger.info "Connecting to server"+"127.0.0.1"
 	servers[i]=TCPSocket.open(servers[i].name,servers[i].port)
