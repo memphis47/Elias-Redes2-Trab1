@@ -1,23 +1,6 @@
 require 'socket'
 require './log.rb'
-
-class Server
-	def name=(value)
-		@name=value
-	end
-	
-	def port=(value)
-		@port=value
-	end
-
-	def name
-		return @name
-	end
-	
-	def port
-		return @port
-	end
-end
+require './serverClass.rb'
 
 NSERVERS=1
 
@@ -25,20 +8,6 @@ def sendMsg(servers,msg)
 	servers.each do |server|
 		server.puts msg
 	end
-end
-
-def verifyFiles()
-	finding=true
-	i=0
-	puts "To aqui"
-	while finding do
-		if(File.exist?("logClient"+i.to_s+".log"))	
-			i+=1
-		else
-			return i
-		end
-	end
-	puts "To aqui1"
 end
 
 def verifyDatas(datas,msg)
@@ -76,8 +45,6 @@ def received(servers)
 	end
 	return datas
 end
-
-fileNumber=verifyFiles()
 
 servers=[]
 
