@@ -46,6 +46,17 @@ def received(servers)
 	return datas
 end
 
+def menu
+	puts "+=====================+"
+	puts " Choose an option:"
+	puts "   1- Change Data"
+	puts "   0- Exit"
+	puts "+=====================+"
+	return Integer(gets.chomp)
+end
+
+fileNumber=verifyFiles()
+
 servers=[]
 
 #logger.info "Getting Port for servers"
@@ -65,7 +76,9 @@ end
 
 lines_to_send=['Hello!','Send a message','Bye']
 
-lines_to_send.each do |line|
+while menu do
+	puts "Type your new Data"
+	line=gets.chom[p
 
 	#logger.info "Send message \"Change\" to servers"
 	sendMsg(servers,"change")
