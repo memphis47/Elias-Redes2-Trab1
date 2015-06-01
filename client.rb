@@ -2,7 +2,7 @@ require 'socket'
 require './log.rb'
 require './serverClass.rb'
 
-NSERVERS=1
+NSERVERS=3
 
 def sendMsg(servers,msg)
 	servers.each do |server|
@@ -76,9 +76,9 @@ end
 
 lines_to_send=['Hello!','Send a message','Bye']
 
-while menu do
+while menu.to_i!=0 do
 	puts "Type your new Data"
-	line=gets.chom[p
+	line=gets.chomp
 
 	#logger.info "Send message \"Change\" to servers"
 	sendMsg(servers,"change")
