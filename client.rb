@@ -2,11 +2,22 @@ require 'socket'
 require './log.rb'
 require './serverClass.rb'
 
-NSERVERS=3
+NSERVERS=1
+
+def connectionService(servers,open=0)
+	NSERVERS.times do |i|
+		if(open)
+			servers[i].socket=TCPSocket.open(servers[i].name,servers[i].port)
+			#logger.info "Server1 has port:"+port[i]
+		else
+			servers[i].socket.close
+		end			
+	end
+end
 
 def sendMsg(servers,msg)
 	servers.each do |server|
-		server.puts msg
+		server.socket.puts msg
 	end
 end
 
@@ -39,7 +50,7 @@ end
 def received(servers)
 	datas=[]
 	NSERVERS.times do|i| 
-		datas[i]=waitFor(servers[i],i)
+		datas[i]=waitFor(servers[i].socket,i)
 		#logger.info "Server 1 reply: "+data[i]
 		puts datas[i]
 	end
@@ -55,7 +66,7 @@ def menu
 	return Integer(gets.chomp)
 end
 
-fileNumber=verifyFiles()
+#fileNumber=verifyFiles()
 
 servers=[]
 
@@ -68,15 +79,15 @@ NSERVERS.times do |i|
 	puts "Digite a porta do servidor "+servers[i].name
 	servers[i].port=Integer(gets.chomp)
 	#logger.info "Connecting to server"+"127.0.0.1"
-	servers[i]=TCPSocket.open(servers[i].name,servers[i].port)
+	servers[i].socket=TCPSocket.open(servers[i].name,servers[i].port)
+	print servers[i].name
+	print servers[i].port
 	#logger.info "Server1 has port:"+port[i]
 end
 #logger.info "Connection to servers sucessful"
 
-
-lines_to_send=['Hello!','Send a message','Bye']
-
 while menu.to_i!=0 do
+	connectionService(servers,1)
 	puts "Type your new Data"
 	line=gets.chomp
 
@@ -112,4 +123,5 @@ while menu.to_i!=0 do
 		#logger.info "Servers reply to commit is a NOK,sending abort to servers to cancel commit"
 		sendMsg(servers,"abort")
 	end
+	connectionService(servers)
 end

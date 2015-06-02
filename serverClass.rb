@@ -14,4 +14,12 @@ class Server
 	def port
 		return @port
 	end
+
+	def socket=(value)
+		@socket=value
+	end
+	
+	def socket
+		return @socket
+	end
 end

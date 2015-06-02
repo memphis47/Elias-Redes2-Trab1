@@ -24,14 +24,12 @@ loop do
 	Thread.start(server.accept) do |client|
 		idc=clientNumber
 		while line = client.gets.chomp  # Read lines from the socket
-			
-			puts line    			# And print with platform line terminator
 			if(line == "change" && semaphore.try_lock)
 				puts("Receive Change from client #{idc}")
 
 				client.print "OK"
 			elsif(line == "change" && !semaphore.try_lock)
-				puts("Receive Change but i can't change")
+				puts("Receive Change from client #{idc} but i can't change")
 				client.print "NOK"
 			elsif(line == "abort")
 				puts("Receive Abort from client #{idc}")
@@ -40,16 +38,18 @@ loop do
 				puts("Receive commit from client #{idc}")
 				client.print "OK"
 			elsif(line.split(":")[0] == "data")
-				semaphore.unlock
 				client.print "OK"
-				puts("Receive data from client #{idc}, change data from "+data)
+				puts("Receive data from client #{idc}, change data")
+				puts("from "+data)
 				dados=line.split("data:")
 				data=dados[1]
 				puts("To "+data)
+				semaphore.unlock
 			end
 			sleep 1.0
 			
 		end
+		clientNumber-=1
 	end
-	clientNumber+=1;
+	clientNumber+=1
 end
