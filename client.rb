@@ -55,8 +55,6 @@ def menu
 	return Integer(gets.chomp)
 end
 
-fileNumber=verifyFiles()
-
 servers=[]
 
 #logger.info "Getting Port for servers"
@@ -72,9 +70,6 @@ NSERVERS.times do |i|
 	#logger.info "Server1 has port:"+port[i]
 end
 #logger.info "Connection to servers sucessful"
-
-
-lines_to_send=['Hello!','Send a message','Bye']
 
 while menu.to_i!=0 do
 	puts "Type your new Data"
