@@ -66,7 +66,6 @@ def menu
 	return Integer(gets.chomp)
 end
 
-#fileNumber=verifyFiles()
 
 servers=[]
 
