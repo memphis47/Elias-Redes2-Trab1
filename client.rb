@@ -7,7 +7,6 @@ NSERVERS=1
 
 #Metodo que controla as conexoes que o cliente faz com o server.
 def connectionService(servers,open=0)
-
 	NSERVERS.times do |i|
 		if(open)
 			#Se o metodo recebeu a solicitacao de abrir o server, 
@@ -99,83 +98,85 @@ def menu
 	return Integer(gets.chomp)
 end
 
+# Solicita os nomes e as portas para cada servidor
+def getServersPorts
+  #logger.info "Getting Port for servers"
+  #Vetor de informacoes dos NSERVERS servidores
+  @servers=[]
+  NSERVERS.times do |i| 
+    # Cada servidor eh do tipo Server que esta definido na classe serverClass.rb
+    @servers[i]= Server.new
+    
+    # Solicita o nome do servidor
+    puts "Write server name "+i.to_s
+    @servers[i].name=gets.chomp
 
-servers=[] # lista de servidores.
+    # Solicita a porta do servidor
+    puts "Write the port of server "+@servers[i].name
+    @servers[i].port=Integer(gets.chomp)
+    #logger.info "Connecting to server #{@servers[i].name}:#{@servers[i].port}
+    if @servers[i].socket=TCPSocket.open(@servers[i].name,@servers[i].port)
+      #logger.info "Connection with Server1 #{@servers[i].name}:#{@servers[i].port} completed"
+    else
 
-#logger.info "Getting Port for servers"
-
-# Solicita o nome e a porta do servidor
-NSERVERS.times do |i| 
-	# Cada servidor eh do tipo Server que esta definido na classe serverClass.rb
-	servers[i]= Server.new 
-
-	# Solicita o nome do servidor
-	puts "Write server name "+i.to_s
-	servers[i].name=gets.chomp
-
-	# Solicita a porta do servidor
-	puts "Write the port of server "+servers[i].name
-	servers[i].port=Integer(gets.chomp)
-	#logger.info "Connecting to server"+"127.0.0.1"
-	
-	# Abre o socket para se comunicar com os servidores.
-	servers[i].socket=TCPSocket.open(servers[i].name,servers[i].port)
-	#logger.info "Server1 has port:"+port[i]
+    end
+  end
+  #logger.info "Connection to servers sucessful"
 end
-#logger.info "Connection to servers sucessful"
 
+# Executa o metodo para obter informações dos servidores
+getServersPorts()
 
-# Solicita que o cliente informe a ação que 
-# deseja através das opçoes do menu.
+# Executa o metodo de menu enquanto a opcao selecionada nao for 0 (Exit)
 while menu.to_i!=0 do
 	# Caso a opção tenha sido 1, ou seja enviar dados.
-	connectionService(servers,1) # abre a conexão com os servidores
+	connectionService(@servers,1) # abre a conexão com os servidores
 	puts "Type your new Data" # Solicita o dado que o cliente deseja enviar.
 	line=gets.chomp # le o dado do cliente
 
 	#logger.info "Send message \"Change\" to servers"
 	# Envia a mensagem para o servidores que deseja alterar os dados
-	sendMsg(servers,"change")
+	sendMsg(@servers,"change")
 	# Recebe a resposta dos servidores para a solicitação do change.
-	datas=received(servers)
+	datas=received(@servers)
 
 	#logger.info "Checking if servers reply to change is OK"
 	# Verifica se a reposta que recebeu é a desejada, nesse caso OK
 	if(verifyAnswer(datas,"OK"))
 		#logger.info "Send message \"commit\" to servers"
 		# Caso seja OK, envia a solicitação de commit para os servidores.
-		sendMsg(servers,"commit")
+		sendMsg(@servers,"commit")
 
 		# Recebe a resposta dos servidores para a solicitação de commit.
-		datas=received(servers)
+		datas=received(@servers)
 
 		#logger.info "Checking if servers reply to commit is OK"
 		# Verifica se a reposta que recebeu é a desejada, nesse caso OK
 		if(verifyAnswer(datas,"OK"))
 			#logger.info "Sending Data "+line+" to servers"
 			# Caso seja OK, envia o novo dado para os servidores.
-			sendMsg(servers,"data:"+line)
+			sendMsg(@servers,"data:"+line)
 
 			# Recebe a resposta dos servidores para o envio do novo dado.
-			datas=received(servers)
+			datas=received(@servers)
 			
 			#logger.info "Checking if servers reply to data send is ACK"
 			# Se a resposta for diferente de OK, manda um abort para o server
 			if(!verifyAnswer(datas,"OK"))
 				#logger.info "Servers reply to data send is a NACK, sending abort to servers to cancel commit"
-				sendMsg(servers,"abort")
+				sendMsg(@servers,"abort")
 			end
 		else
 			#logger.info "Servers reply to commit is a NOK,sending abort to servers to cancel commit"
 			# Se a resposta for diferente de OK, manda um abort para o server
 			puts("Sending Abort")
-			sendMsg(servers,"abort")
+			sendMsg(@servers,"abort")
 		end
 	else
 		#logger.info "Servers reply to commit is a NOK,sending abort to servers to cancel commit"
 		# Se a resposta for diferente de OK, manda um abort para o server
-		sendMsg(servers,"abort")
+		sendMsg(@servers,"abort")
 	end
 	# Após terminar todos os envios fecha a conexão com os servers.
-	connectionService(servers)
+	connectionService(@servers)
 end
