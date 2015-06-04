@@ -17,9 +17,12 @@ class Log
     @@writing = false
   end
 
-  def write(text)
+  def write(text, type="info")
+    unless type=="info"
+      type = "error"
+    end
     open(@name, 'a') do |f|
-      f << text << "\n"
+      f << type.capitalize << ": " << text << "\n"
     end
   end
 
