@@ -68,15 +68,19 @@ loop do
 				client.print "OK"
 				puts("Receive data from client #{idc}, change data")
 				puts("from "+data)
+				# divide a mensage data:dadoRecebido, em data: e dadoRecebido
 				dados=line.split("data:")
+				# troca o dado atual no servidor pelo dado recebido na mensagem
 				data=dados[1]
 				puts("To "+data)
+				# libera o servidor para novo uso.
 				semaphore.unlock
 			end
+			# espera 1 segundo entre as mensagens
+			# serve para testar o protocolo 2PC
 			sleep 1.0
 			
 		end
-		clientNumber-=1
 	end
 	clientNumber+=1
 end

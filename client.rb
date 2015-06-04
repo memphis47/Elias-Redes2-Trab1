@@ -7,18 +7,28 @@ NSERVERS=1
 
 #Metodo que controla as conexoes que o cliente faz com o server.
 def connectionService(servers,open=0)
-  NSERVERS.times do |i|
-    if(open)
-      #Se o metodo recebeu a solicitacao de abrir o server, 
-      #ou seja open=1
-      #Abre a conexao com todos os servidores que estao listados no vetor de servers.
-      servers[i].socket=TCPSocket.open(servers[i].name,servers[i].port)
-      @log.write("Server1 has port:#{servers[i]}")
-    else
-      # Se open for diferente de 1, fecha as conexões com os servers listados no vetor.
-      servers[i].socket.close
-    end     
-  end
+	NSERVERS.times do |i|
+		if(open)
+			#Se o metodo recebeu a solicitacao de abrir o server, 
+			#ou seja open=1
+			#Abre a conexao com todos os servidores que estao listados no vetor de servers.
+			begin
+				@log.write("Abrindo conexão com o servidor #{servers[i].name}")
+				servers[i].socket=TCPSocket.open(servers[i].name,servers[i].port)
+				@log.write("Conexao aberta com sucesso")
+			rescue Exception => e
+				@log.write("Ocorreu um erro ao abrir o servidor #{servers[i].name}","error")
+				@log.write("Erro: #{e.to_s}","error")
+				@log.write("Terminando a execucao do programa para evitar incosistencia de dados","error")
+				exit
+			end
+
+		else
+		  @log.write("Fechando a comunicacao com o servidor: #{servers[i].name}")
+		  # Se open for diferente de 1, fecha as conexões com os servers listados no vetor.
+		  servers[i].socket.close
+		end     
+	end
 end
 
 # Método para enviar uma mensagem para o vetor de servers.
@@ -26,7 +36,15 @@ def sendMsg(servers,msg)
 
   servers.each do |server|
     # para cada server do cliente, manda a mensagem passada como parametro
-    server.socket.puts msg
+    @log.write("Enviando mensagem para o servidor #{servers[i].name}")
+    @log.write("Mensagem sendo enviada: #{msg}")
+    begin
+    	server.socket.puts msg
+    rescue Exception => e
+    	@log.write("Erro ao enviar mensagem para o servidor #{servers[i].name}")
+    	@log.write("Terminando a execucao do programa para evitar incosistencia de dados","error")
+    	exit
+    end    
   end
 end
 
@@ -37,19 +55,23 @@ def verifyAnswer(msgsServer,msg)
   msgsServer.each do |msgServer|
     
     @log.write("Checking reply from server #{i}")
-    @log.write("Reply from server#{i}= #{msgServer}")
+    @log.write("Reply from server #{i}= #{msgServer}")
     # Para cada mensagem recebida dos servidores,
     # verifica se a mensagem do servidor eh igual a mensagem esperada
     if(msgServer!=msg)
+    	@log.write("Resposta recebida do servidor #{i} eh diferente do esperado")
+    	@log.write("Resposta do servidor#{i}= #{msgServer}")
+    	@log.write("Resposta esperada= #{msg}")
       #logger.error "Reply receiveid is different than expected"
       #logger.error "Reply: "+msgServer
       #logger.error "Expected reply"+msg
       # Retorna falso se uma das mensagens do servidor 
       #for diferente da mensagem esperada
-      return false
+    	return false
     end
     i+=1
   end
+  @log.write("Respostas recebidas dos servidores estao de acordo com o esperado")
   #logger.error "Everything is ok with the replies from servers"
   # Retorna True, se todas as mensagem forem iguais a mensagem esperada.
   return true
@@ -60,26 +82,28 @@ end
 # para a mensagem enviada anteriormente no metodo sendMsg
 def waitFor(server,i)
   #logger.error "Waiting server"+i+" reply"
+  @log.write("Esperando pela resposta do servidor #{i}")
   data= server.recv(800)
   # recebe o dado do servidor e compara se ele é um dos tres tipos:
   # OK -> Caso a mensagem tenha sido aceita pelo servidor
   # NOK -> Caso a mensagem tenha sido rejeitada pelo servidor
   if(data=="OK" || data=="NOK")
+   	@log.write("Resposta recebida do servidor #{server.name}: #{data}")
     #logger.error "Reply "+data+" received from the server"+i
     # retorna a mensagem recebida pelo servidor.
     return data
   end
+  @log.write("Resposta recebida do servidor #{server.name} nao esta no padrao esperado")
 end
 
 # Metodo que espera a resposta de todos os servidores.
 # Utiliza o metodo waitFor para cada servidor na lista de servidores.
 def received(servers)
   datas=[] # cada resposta do servidor eh adicionada na lista de dados.
-  NSERVERS.times do|i| 
+  NSERVERS.times do|i|
     # Cada dado recebido por um servidor eh retornado pelo metodo waitFor
     # e esse dado eh adicionado na lista de dados.
     datas[i]=waitFor(servers[i].socket,i)
-    @log.write("Server 1 reply: #{datas[i]}")
     # Mostra qual foi a resposta do servidor.
     puts datas[i]
   end
@@ -119,7 +143,7 @@ end
 
 # Solicita os nomes e as portas para cada servidor
 def getServersPorts
-  @log.write("Getting Port for servers")
+  @log.write("Getting Names and Ports for servers")
   #Vetor de informacoes dos NSERVERS servidores
   @servers=[]
   NSERVERS.times do |i| 
@@ -127,16 +151,21 @@ def getServersPorts
     @servers[i]= Server.new
     
     # Solicita o nome do servidor
+    @log.write("Solictando para o cliente o nome do servidor")
     puts "Write server name "+i.to_s
     @servers[i].name=gets.chomp
+    @log.write("Nome recebido: #{@servers[i].name}")
     # Caso o cliente digite letras no lugar do numero da porta, trata a excecao
     loop do
       # Solicita a porta do servidor
+      @log.write("Solictando para o cliente a porta do servidor #{@servers[i].name}")
       puts "Write the port of server "+@servers[i].name
+      @log.write("porta recebida: #{@servers[i].port}")
       begin
         @servers[i].port=Integer(gets.chomp)
       rescue
         # Se o cliente digitar algo nao numerico, pede para digitar novamente
+        @log.write("A porta recebida #{@servers[i].port} eh uma porta invalida, essa porta deve ser um numeral","error")
         puts "Please insert only numbers"
       else
         # Caso ele digite o numero correto, tenta estabelecer conexao
@@ -146,11 +175,11 @@ def getServersPorts
         rescue Exception => e
           # Se a conexao for recusada, sair do programa
           puts "Connection with #{@servers[i].name}:#{@servers[i].port} refused! Exiting the program..."
-          @log.write("Connection with Server1 #{@servers[i].name}:#{@servers[i].port} refused! Exiting the program...")
+          @log.write("Connection with Server #{@servers[i].name}:#{@servers[i].port} refused! Exiting the program...")
           exit
         else
           # Caso a conexao seja aceita, continua
-          @log.write("Connection with Server1 #{@servers[i].name}:#{@servers[i].port} completed")
+          @log.write("Connection with Server #{@servers[i].name}:#{@servers[i].port} completed")
         end
         break
       end
@@ -161,6 +190,10 @@ end
 
 # Cria arquivo para armazenar log
 @log = Log.new
+
+@log.write("----------------------------------------------------------------------------------------")
+@log.write("Inicio da execucao do cliente que se comunica com #{NSERVERS} utilizando o protocolo 2PC")
+@log.write("----------------------------------------------------------------------------------------")
 
 # Executa o metodo para obter informações dos servidores
 getServersPorts()
@@ -201,7 +234,7 @@ while menu.to_i!=0 do
       @log.write("Checking if servers reply to data send is ACK")
       # Se a resposta for diferente de OK, manda um abort para o server
       if(!verifyAnswer(datas,"OK"))
-        @log.write("Servers reply to data send is a NACK, sending abort to servers to cancel commit")
+        @log.write("Servers reply to data send is a NOK, sending abort to servers to cancel commit")
         sendMsg(@servers,"abort")
       end
     else
