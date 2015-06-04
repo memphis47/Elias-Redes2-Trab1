@@ -12,6 +12,8 @@ name = Socket.gethostname
 
 # puts "Digite a porta do servidor"
 # port= Integer(gets.chomp)
+begin
+	
 port = Integer(ARGV[0])
 server = TCPServer.new(name,port)
 
@@ -52,4 +54,14 @@ loop do
 		clientNumber-=1
 	end
 	clientNumber+=1
+end
+
+
+rescue Exception => e
+	if ARGV[0]==nil
+		print "You need to Write the port of server in parameter,like this\n"
+		print "\t $ ruby server.rb 8000\n\n"
+		print "Try again using the right way this time.\n\n"
+	end
+	
 end
