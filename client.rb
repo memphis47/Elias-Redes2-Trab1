@@ -67,44 +67,58 @@ def waitFor(server,i)
 	# NOK -> Caso a mensagem tenha sido rejeitada pelo servidor
 	if(data=="OK" || data=="NOK")
 		#logger.error "Reply "+data+" received from the server"+i
-		# retorna a mensagem recebida pelo server.
+		# retorna a mensagem recebida pelo servidor.
 		return data
 	end
 end
 
+# Metodo que espera a resposta de todos os servidores.
+# Utiliza o metodo waitFor para cada servidor na lista de servidores.
 def received(servers)
-	datas=[]
+	datas=[] # cada resposta do servidor eh adicionada na lista de dados.
 	NSERVERS.times do|i| 
+		# Cada dado recebido por um servidor eh retornado pelo metodo waitFor
+		# e esse dado eh adicionado na lista de dados.
 		datas[i]=waitFor(servers[i].socket,i)
 		#logger.info "Server 1 reply: "+data[i]
+		# Mostra qual foi a resposta do servidor.
 		puts datas[i]
 	end
-	return datas
+	return datas # retorna essa lista para uso posterior
 end
 
+# Metodo que exibe o menu de interacao com o usuario
 def menu
 	puts "+=====================+"
 	puts " Choose an option:"
 	puts "   1- Change Data"
 	puts "   0- Exit"
 	puts "+=====================+"
+	# O usuario tem duas opcoes, mudar os dados, ou sair do programa
+	# le e retorna a opcao digitada pelo usuario
 	return Integer(gets.chomp)
 end
 
 
-servers=[]
+servers=[] # lista de servidores.
 
 #logger.info "Getting Port for servers"
 
 # Solicita o nome e a porta do servidor
 NSERVERS.times do |i| 
-	servers[i]= Server.new
+	# Cada servidor eh do tipo Server que esta definido na classe serverClass.rb
+	servers[i]= Server.new 
+
+	# Solicita o nome do servidor
 	puts "Write server name "+i.to_s
 	servers[i].name=gets.chomp
 
+	# Solicita a porta do servidor
 	puts "Write the port of server "+servers[i].name
 	servers[i].port=Integer(gets.chomp)
 	#logger.info "Connecting to server"+"127.0.0.1"
+	
+	# Abre o socket para se comunicar com os servidores.
 	servers[i].socket=TCPSocket.open(servers[i].name,servers[i].port)
 	#logger.info "Server1 has port:"+port[i]
 end
