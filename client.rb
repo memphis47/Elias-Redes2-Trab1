@@ -16,40 +16,58 @@ def connectionService(servers,open=0)
 			servers[i].socket=TCPSocket.open(servers[i].name,servers[i].port)
 			#logger.info "Server1 has port:"+port[i]
 		else
-			# Se open for diferente de 1
+			# Se open for diferente de 1, fecha as conexões com os servers listados no vetor.
 			servers[i].socket.close
 		end			
 	end
 end
 
+# Método para enviar uma mensagem para o vetor de servers.
 def sendMsg(servers,msg)
+
 	servers.each do |server|
+		# para cada server do cliente, manda a mensagem passada como parametro
 		server.socket.puts msg
 	end
 end
 
-def verifyDatas(datas,msg)
+# Método que verifica se as mensagem recebidas pelo cliente
+# sao aquelas que ele esperava.
+def verifyAnswer(msgsServer,msg)
 	i=0
-	datas.each do |data|
+	msgsServer.each do |msgServer|
+		
 		#logger.info "Checking reply from server"+i
-		#logger.info "Reply from server"+i+"= "+data
-		if(data!=msg)
+		#logger.info "Reply from server"+i+"= "+msgServer
+		# Para cada mensagem recebida dos servidores,
+		# verifica se a mensagem do servidor eh igual a mensagem esperada
+		if(msgServer!=msg)
 			#logger.error "Reply receiveid is different than expected"
-			#logger.error "Reply: "+data
+			#logger.error "Reply: "+msgServer
 			#logger.error "Expected reply"+msg
+			# Retorna falso se uma das mensagens do servidor 
+			#for diferente da mensagem esperada
 			return false
 		end
 		i+=1
 	end
 	#logger.error "Everything is ok with the replies from servers"
+	# Retorna True, se todas as mensagem forem iguais a mensagem esperada.
 	return true
 end
 
+
+# Metodo que espera a resposta do servidor 
+# para a mensagem enviada anteriormente no metodo sendMsg
 def waitFor(server,i)
 	#logger.error "Waiting server"+i+" reply"
 	data= server.recv(800)
-	if(data=="ACK" || data=="OK" || data=="NOK")
+	# recebe o dado do servidor e compara se ele é um dos tres tipos:
+	# OK -> Caso a mensagem tenha sido aceita pelo servidor
+	# NOK -> Caso a mensagem tenha sido rejeitada pelo servidor
+	if(data=="OK" || data=="NOK")
 		#logger.error "Reply "+data+" received from the server"+i
+		# retorna a mensagem recebida pelo server.
 		return data
 	end
 end
@@ -109,7 +127,7 @@ while menu.to_i!=0 do
 
 	#logger.info "Checking if servers reply to change is OK"
 	# Verifica se a reposta que recebeu é a desejada, nesse caso OK
-	if(verifyDatas(datas,"OK"))
+	if(verifyAnswer(datas,"OK"))
 		#logger.info "Send message \"commit\" to servers"
 		# Caso seja OK, envia a solicitação de commit para os servidores.
 		sendMsg(servers,"commit")
@@ -119,7 +137,7 @@ while menu.to_i!=0 do
 
 		#logger.info "Checking if servers reply to commit is OK"
 		# Verifica se a reposta que recebeu é a desejada, nesse caso OK
-		if(verifyDatas(datas,"OK"))
+		if(verifyAnswer(datas,"OK"))
 			#logger.info "Sending Data "+line+" to servers"
 			# Caso seja OK, envia o novo dado para os servidores.
 			sendMsg(servers,"data:"+line)
@@ -129,7 +147,7 @@ while menu.to_i!=0 do
 			
 			#logger.info "Checking if servers reply to data send is ACK"
 			# Se a resposta for diferente de OK, manda um abort para o server
-			if(!verifyDatas(datas,"OK"))
+			if(!verifyAnswer(datas,"OK"))
 				#logger.info "Servers reply to data send is a NACK, sending abort to servers to cancel commit"
 				sendMsg(servers,"abort")
 			end

@@ -35,7 +35,7 @@ loop do
 				client.print "NOK"
 			elsif(line == "abort")
 				puts("Receive Abort from client #{idc}")
-				client.print "ACK"
+				client.print "OK"
 			elsif(line == "commit")
 				puts("Receive commit from client #{idc}")
 				client.print "OK"
