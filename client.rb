@@ -13,7 +13,7 @@ def connectionService(servers,open=0)
       #ou seja open=1
       #Abre a conexao com todos os servidores que estao listados no vetor de servers.
       servers[i].socket=TCPSocket.open(servers[i].name,servers[i].port)
-      #logger.info "Server1 has port:"+port[i]
+      @log.write("Server1 has port:#{servers[i]}")
     else
       # Se open for diferente de 1, fecha as conexões com os servers listados no vetor.
       servers[i].socket.close
@@ -36,8 +36,8 @@ def verifyAnswer(msgsServer,msg)
   i=0
   msgsServer.each do |msgServer|
     
-    #logger.info "Checking reply from server"+i
-    #logger.info "Reply from server"+i+"= "+msgServer
+    @log.write("Checking reply from server #{i}")
+    @log.write("Reply from server#{i}= #{msgServer}")
     # Para cada mensagem recebida dos servidores,
     # verifica se a mensagem do servidor eh igual a mensagem esperada
     if(msgServer!=msg)
@@ -79,7 +79,7 @@ def received(servers)
     # Cada dado recebido por um servidor eh retornado pelo metodo waitFor
     # e esse dado eh adicionado na lista de dados.
     datas[i]=waitFor(servers[i].socket,i)
-    #logger.info "Server 1 reply: "+data[i]
+    @log.write("Server 1 reply: #{datas[i]}")
     # Mostra qual foi a resposta do servidor.
     puts datas[i]
   end
@@ -88,19 +88,38 @@ end
 
 # Metodo que exibe o menu de interacao com o usuario
 def menu
-  puts "+=====================+"
-  puts " Choose an option:"
-  puts "   1- Change Data"
-  puts "   0- Exit"
-  puts "+=====================+"
-  # O usuario tem duas opcoes, mudar os dados, ou sair do programa
-  # le e retorna a opcao digitada pelo usuario
-  return Integer(gets.chomp)
+  validOptions = [0,1]
+  loop do 
+    @log.write("Esperando cliente informar opção desejada")
+    puts "+=====================+"
+    puts " Choose an option:"
+    puts "   1- Change Data"
+    puts "   0- Exit"
+    puts "+=====================+"
+    # O usuario tem duas opcoes, mudar os dados, ou sair do programa
+    begin
+      option = Integer(gets.chomp)
+    rescue
+      # Caso o cliente algo nao numerico
+      @log.write("O cliente digitou uma opção não numérica!","error")
+      puts "Please type only the number!"
+    else
+      unless validOptions.include?(option)
+        # Caso digite uma opcao invalida, informa o erro, e pede para digitar novamente
+        @log.write("O cliente digitou uma opção inválida!","error")
+        puts "Invalid option"
+      else
+        # le e retorna a opcao digitada pelo usuario
+        @log.write("O cliente escolheu a opção #{option}")
+        return option
+      end
+    end
+  end
 end
 
 # Solicita os nomes e as portas para cada servidor
 def getServersPorts
-  #logger.info "Getting Port for servers"
+  @log.write("Getting Port for servers")
   #Vetor de informacoes dos NSERVERS servidores
   @servers=[]
   NSERVERS.times do |i| 
@@ -110,19 +129,38 @@ def getServersPorts
     # Solicita o nome do servidor
     puts "Write server name "+i.to_s
     @servers[i].name=gets.chomp
-
-    # Solicita a porta do servidor
-    puts "Write the port of server "+@servers[i].name
-    @servers[i].port=Integer(gets.chomp)
-    #logger.info "Connecting to server #{@servers[i].name}:#{@servers[i].port}
-    if @servers[i].socket=TCPSocket.open(@servers[i].name,@servers[i].port)
-      #logger.info "Connection with Server1 #{@servers[i].name}:#{@servers[i].port} completed"
-    else
-
+    # Caso o cliente digite letras no lugar do numero da porta, trata a excecao
+    loop do
+      # Solicita a porta do servidor
+      puts "Write the port of server "+@servers[i].name
+      begin
+        @servers[i].port=Integer(gets.chomp)
+      rescue
+        # Se o cliente digitar algo nao numerico, pede para digitar novamente
+        puts "Please insert only numbers"
+      else
+        # Caso ele digite o numero correto, tenta estabelecer conexao
+        @log.write("Connecting to server #{@servers[i].name}:#{@servers[i].port}")
+        begin
+          @servers[i].socket=TCPSocket.open(@servers[i].name,@servers[i].port)
+        rescue Exception => e
+          # Se a conexao for recusada, sair do programa
+          puts "Connection with #{@servers[i].name}:#{@servers[i].port} refused! Exiting the program..."
+          @log.write("Connection with Server1 #{@servers[i].name}:#{@servers[i].port} refused! Exiting the program...")
+          exit
+        else
+          # Caso a conexao seja aceita, continua
+          @log.write("Connection with Server1 #{@servers[i].name}:#{@servers[i].port} completed")
+        end
+        break
+      end
     end
   end
-  #logger.info "Connection to servers sucessful"
+  @log.write("Connection to servers sucessful")
 end
+
+# Cria arquivo para armazenar log
+@log = Log.new
 
 # Executa o metodo para obter informações dos servidores
 getServersPorts()
@@ -134,49 +172,50 @@ while menu.to_i!=0 do
   puts "Type your new Data" # Solicita o dado que o cliente deseja enviar.
   line=gets.chomp # le o dado do cliente
 
-  #logger.info "Send message \"Change\" to servers"
+  @log.write("Send message \"Change\" to servers")
   # Envia a mensagem para o servidores que deseja alterar os dados
   sendMsg(@servers,"change")
   # Recebe a resposta dos servidores para a solicitação do change.
   datas=received(@servers)
 
-  #logger.info "Checking if servers reply to change is OK"
+  @log.write("Checking if servers reply to change is OK")
   # Verifica se a reposta que recebeu é a desejada, nesse caso OK
   if(verifyAnswer(datas,"OK"))
-    #logger.info "Send message \"commit\" to servers"
+    @log.write("Send message \"commit\" to servers")
     # Caso seja OK, envia a solicitação de commit para os servidores.
     sendMsg(@servers,"commit")
 
     # Recebe a resposta dos servidores para a solicitação de commit.
     datas=received(@servers)
 
-    #logger.info "Checking if servers reply to commit is OK"
+    @log.write("Checking if servers reply to commit is OK")
     # Verifica se a reposta que recebeu é a desejada, nesse caso OK
     if(verifyAnswer(datas,"OK"))
-      #logger.info "Sending Data "+line+" to servers"
+      @log.write("Sending Data "+line+" to servers")
       # Caso seja OK, envia o novo dado para os servidores.
       sendMsg(@servers,"data:"+line)
 
       # Recebe a resposta dos servidores para o envio do novo dado.
       datas=received(@servers)
       
-      #logger.info "Checking if servers reply to data send is ACK"
+      @log.write("Checking if servers reply to data send is ACK")
       # Se a resposta for diferente de OK, manda um abort para o server
       if(!verifyAnswer(datas,"OK"))
-        #logger.info "Servers reply to data send is a NACK, sending abort to servers to cancel commit"
+        @log.write("Servers reply to data send is a NACK, sending abort to servers to cancel commit")
         sendMsg(@servers,"abort")
       end
     else
-      #logger.info "Servers reply to commit is a NOK,sending abort to servers to cancel commit"
+      @log.write("Servers reply to commit is a NOK,sending abort to servers to cancel commit")
       # Se a resposta for diferente de OK, manda um abort para o server
       puts("Sending Abort")
       sendMsg(@servers,"abort")
     end
   else
-    #logger.info "Servers reply to commit is a NOK,sending abort to servers to cancel commit"
+    @log.write("Servers reply to commit is a NOK,sending abort to servers to cancel commit")
     # Se a resposta for diferente de OK, manda um abort para o server
     sendMsg(@servers,"abort")
   end
   # Após terminar todos os envios fecha a conexão com os servers.
   connectionService(@servers)
 end
+@log.write("Encerrando programa")
