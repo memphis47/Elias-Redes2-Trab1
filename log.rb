@@ -14,7 +14,7 @@ class Log
       type = "error"
     end
     open(@name, 'a') do |f|
-      f << Time.now.strftime("%d/%m/%Y %H:%M:%S ") << type.capitalize << ": " << text << "\n"
+      f << Time.now.strftime("%H:%M:%S ") << type.capitalize << ": " << text << "\n"
     end
   end
 
