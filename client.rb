@@ -13,7 +13,7 @@ def connectionService(servers,open=0)
 			#ou seja open=1
 			#Abre a conexao com todos os servidores que estao listados no vetor de servers.
 			begin
-				@log.write("Abrindo conexão com o servidor #{servers[i].name}")
+				@log.write("Abrindo conexao com o servidor #{servers[i].name}")
 				servers[i].socket=TCPSocket.open(servers[i].name,servers[i].port)
 				@log.write("Conexao aberta com sucesso")
 			rescue Exception => e
@@ -36,12 +36,12 @@ def sendMsg(servers,msg)
 
   servers.each do |server|
     # para cada server do cliente, manda a mensagem passada como parametro
-    @log.write("Enviando mensagem para o servidor #{servers[i].name}")
+    @log.write("Enviando mensagem para o servidor #{server.name}")
     @log.write("Mensagem sendo enviada: #{msg}")
     begin
     	server.socket.puts msg
     rescue Exception => e
-    	@log.write("Erro ao enviar mensagem para o servidor #{servers[i].name}")
+    	@log.write("Erro ao enviar mensagem para o servidor #{server.name}")
     	@log.write("Terminando a execucao do programa para evitar incosistencia de dados","error")
     	exit
     end    
@@ -88,12 +88,12 @@ def waitFor(server,i)
   # OK -> Caso a mensagem tenha sido aceita pelo servidor
   # NOK -> Caso a mensagem tenha sido rejeitada pelo servidor
   if(data=="OK" || data=="NOK")
-   	@log.write("Resposta recebida do servidor #{server.name}: #{data}")
+   	@log.write("Resposta recebida do servidor #{i}: #{data}")
     #logger.error "Reply "+data+" received from the server"+i
     # retorna a mensagem recebida pelo servidor.
     return data
   end
-  @log.write("Resposta recebida do servidor #{server.name} nao esta no padrao esperado")
+  @log.write("Resposta recebida do servidor #{i} nao esta no padrao esperado")
 end
 
 # Metodo que espera a resposta de todos os servidores.
@@ -114,7 +114,7 @@ end
 def menu
   validOptions = [0,1]
   loop do 
-    @log.write("Esperando cliente informar opção desejada")
+    @log.write("Esperando cliente informar opcao desejada")
     puts "+=====================+"
     puts " Choose an option:"
     puts "   1- Change Data"
@@ -125,16 +125,16 @@ def menu
       option = Integer(gets.chomp)
     rescue
       # Caso o cliente algo nao numerico
-      @log.write("O cliente digitou uma opção não numérica!","error")
+      @log.write("O cliente digitou uma opcao nao numerica!","error")
       puts "Please type only the number!"
     else
       unless validOptions.include?(option)
         # Caso digite uma opcao invalida, informa o erro, e pede para digitar novamente
-        @log.write("O cliente digitou uma opção inválida!","error")
+        @log.write("O cliente digitou uma opcao invalida!","error")
         puts "Invalid option"
       else
         # le e retorna a opcao digitada pelo usuario
-        @log.write("O cliente escolheu a opção #{option}")
+        @log.write("O cliente escolheu a opcao #{option}")
         return option
       end
     end
@@ -189,7 +189,7 @@ def getServersPorts
 end
 
 # Cria arquivo para armazenar log
-@log = Log.new
+@log = Log.new("Client")
 
 @log.write("----------------------------------------------------------------------------------------")
 @log.write("Inicio da execucao do cliente que se comunica com #{NSERVERS} utilizando o protocolo 2PC")

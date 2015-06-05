@@ -1,10 +1,10 @@
 class Log
   @@writing = false
 
-  def initialize
+  def initialize(typeName)
     while @@writing do end
     @@writing = true
-    @name = "LogClient-"+Time.now.strftime("%d%m%Y-%H%M%S")+".log"
+    @name = "Log#{typeName}-"+Time.now.strftime("%d%m%Y-%H%M%S")+".log"
     open(@name, 'w') do || end
     @@writing = false
   end
