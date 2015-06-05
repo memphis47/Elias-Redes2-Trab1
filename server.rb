@@ -130,13 +130,13 @@ begin
 	puts "#{name}:#{port.to_s}"
 
 	clientNumber=0;
-
+	@log.write("Iniciando escuta de clientes")
 	loop do
 		# Para cada vez que o cliente abre uma conexao com o server,
 		# eh aberto uma thread para esse cliente.
-		@log.write("Iniciando escuta de clientes")
+		
 		Thread.start(server.accept) do |client|
-			transferFile(client,port.to_s)
+			#transferFile(client,port.to_s)
 			@log.write("Novo cliente aceito")
 			# ID que o cliente recebe quando se conecta com o servidor.
 			idc=clientNumber
@@ -201,6 +201,10 @@ begin
 					@log.write("Liberando o servidor para novo uso")
 					# libera o servidor para novo uso.
 					semaphore.unlock
+				elsif (line == "refresh")
+					@log.write("Transferindo Arquivo Para o cliente")
+					# inicia a transferencia do arquivo para o cliente.
+					transferFile(client,port.to_s)	
 				end
 				# espera 1 segundo entre as mensagens
 				# serve para testar o protocolo 2PC
