@@ -1,3 +1,16 @@
+#-----------------------------------------------------------#
+# 						server.rb
+#    Script em ruby que executa o servidor no protocolo 2PC
+#    Objetivo: Fazer a comunicação entre servidor e cliente
+#              e salvar os dados novos que o cliente passa  
+#    		   para esse servidor
+#    
+#    Autores: Alan Peterson Carvalho Silva
+#             Rafael Rocha de Carvalho
+#    Disciplina: Redes de computadores II
+#    Data da ultima atualização: 05/06/2015
+#-----------------------------------------------------------#
+
 require 'socket'
 require './log.rb'
 require 'thread'
@@ -43,6 +56,16 @@ def writeFile(data,port)
 		@log.write("Escrevendo o dado #{data} no arquivo")
 		f << Time.now.strftime("[%H:%M:%S] ") << data << "\n"
 	end
+end
+
+def transferFile(client,port)
+	@log.write("Recuperando o conteudo do arquivo")
+	lines = IO.readlines("data#{port}.txt")
+	client.print("data#{port}.txt")
+	lines.each do |line|
+		client.print(line)
+	end
+	client.print("--+EOF+--")
 end
 
 # Cria arquivo para armazenar log
@@ -91,6 +114,7 @@ begin
 		# eh aberto uma thread para esse cliente.
 		@log.write("Iniciando escuta de clientes")
 		Thread.start(server.accept) do |client|
+			transferFile(client)
 			@log.write("Novo cliente aceito")
 			# ID que o cliente recebe quando se conecta com o servidor.
 			idc=clientNumber
