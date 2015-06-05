@@ -172,6 +172,7 @@ end
 # Metodo que exibe o menu de interacao com o usuario
 def menu
   system "clear"
+  @dadosAtuais=receiveDatasFiles(@servers)
   validOptions = [0,1,2]
   loop do 
   	@log.write("Escrevendo os dados Atuais")
@@ -183,12 +184,12 @@ def menu
   		i+=1
   	end
     @log.write("Esperando cliente informar opcao desejada")
-    puts "+=====================+"
+    puts "+============================+"
     puts " Choose an option:"
     puts "   1- Change Data"
     puts "   2- List data from servers"
     puts "   0- Exit"
-    puts "+=====================+"
+    puts "+============================+"
     # O usuario tem tres opcoes, mudar os dados, listar os dados de algum server, ou sair do programa
     begin
       option = Integer(gets.chomp)
@@ -312,6 +313,8 @@ def receiveDatasFiles(servers)
 	@log.write("Recebendo dados atuais do servidor")
 	dadosAtuais=[]
 	servers.each do |server|
+		@log.write("Enviando refresh para o servidor #{server.name}")
+		server.socket.puts "refresh"
 		dadosAtuais << readLines(server)
 	end
 	return dadosAtuais
