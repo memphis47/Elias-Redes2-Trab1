@@ -3,7 +3,7 @@ require './log.rb'
 require './serverClass.rb'
 
 #Numero de servidores em que o cliente ira se conectar.
-NSERVERS=3
+NSERVERS=1
 
 #Metodo que controla as conexoes que o cliente faz com o server.
 def connectionService(servers,open=0)
@@ -110,17 +110,77 @@ def received(servers)
   return datas # retorna essa lista para uso posterior
 end
 
+def showData(i)
+	system "clear"
+	@log.write("Recuperando o conteudo do arquivo")
+	lines = IO.readlines("#{@servers[i].name}#{@servers[i].port}Data.txt")
+	@log.write("Escrevendo dados na tela")
+	lines.each do |line|
+		@log.write("Escrevendo dado #{line} para o cliente")
+		puts (line)
+	end
+	puts "Press \"enter\" to back"
+	gets.chomp
+end
+
+
+def showMenuServer
+	validOptions = []
+	validOptions << 0
+	loop do
+		system "clear"
+		i=1
+		@log.write("Esperando cliente informar opcao desejada")
+	    puts "What server do you want to see data history ? If you want back press 0"
+	    @servers.each do |server|
+	  		puts "#{i}- servidor #{server.name}:#{server.port}"
+	  		validOptions << i
+	  		i+=1
+	  	end
+	  	begin
+	      option = Integer(gets.chomp)
+	    rescue
+	      # Caso o cliente algo nao numerico
+	      @log.write("O cliente digitou uma opcao nao numerica!","error")
+	      puts "Please type only the number!"
+	    else
+	      unless validOptions.include?(option)
+	        # Caso digite uma opcao invalida, informa o erro, e pede para digitar novamente
+	        @log.write("O cliente digitou uma opcao invalida!","error")
+	        puts "Invalid option"
+	      else
+	        # le e retorna a opcao digitada pelo usuario
+	        @log.write("O cliente escolheu a opcao #{option}")
+	        if(option>0)
+	        	showData(option-1)
+	        else
+	        	@log.write("Voltando ao menu inicial")
+	        	return
+	        end
+	      end
+		end
+	end
+end
+
 # Metodo que exibe o menu de interacao com o usuario
 def menu
-  validOptions = [0,1]
+  system "clear"
+  validOptions = [0,1,2]
   loop do 
+  	@log.write("Escrevendo os dados Atuais")
+  	i=0
+  	@servers.each do |server|
+  		puts "Dado atual do servidor #{server.name}:#{server.port} => #{@dadosAtuais[i]}"
+  		i+=1
+  	end
     @log.write("Esperando cliente informar opcao desejada")
     puts "+=====================+"
     puts " Choose an option:"
     puts "   1- Change Data"
+    puts "   2- List data from servers"
     puts "   0- Exit"
     puts "+=====================+"
-    # O usuario tem duas opcoes, mudar os dados, ou sair do programa
+    # O usuario tem tres opcoes, mudar os dados, listar os dados de algum server, ou sair do programa
     begin
       option = Integer(gets.chomp)
     rescue
@@ -188,6 +248,7 @@ def getServersPorts
   @log.write("Connection to servers sucessful")
 end
 
+# Metodo para escrever em um arquivo local no cliente os dados atuais do servidor
 def writeLinesInFile(server,lines)
 	@log.write("Verificando se o arquivo #{server.name}#{server.port}Data.txt existe")
 	if !File.exists?("#{server.name}#{server.port}Data.txt")
@@ -205,6 +266,7 @@ def writeLinesInFile(server,lines)
 	end
 end
 
+# Metodo para que recebe do servidor as linhas do arquivo de dados
 def readLines(server)
 	lines=[]
 	@log.write("Esperando pela resposta do servidor #{server.name}")
@@ -216,6 +278,7 @@ def readLines(server)
 			@log.write("Enviando OK para o servidor")
 			server.socket.print "OK"
 			@log.write("OK enviado para o servidor")
+			
 		else
 			@log.write("Enviando OK para o servidor")
 			server.socket.print "OK"
@@ -225,13 +288,18 @@ def readLines(server)
 	end
 	@log.write("Mensagem EOF Recebida")
 	writeLinesInFile(server,lines)
+	@log.write("Retornando dado atual: #{lines.last}")
+	return lines.last
 end
 
+# Metodo para receber o arquivo com o dado atual e o historico dos dados do servidor
 def receiveDatasFiles(servers)
 	@log.write("Recebendo dados atuais do servidor")
+	dadosAtuais=[]
 	servers.each do |server|
-		readLines(server)
+		dadosAtuais << readLines(server)
 	end
+	return dadosAtuais
 end
 
 # Cria arquivo para armazenar log
@@ -243,59 +311,68 @@ end
 
 # Executa o metodo para obter informações dos servidores
 getServersPorts()
-
+@dadosAtuais=receiveDatasFiles(@servers)
 # Executa o metodo de menu enquanto a opcao selecionada nao for 0 (Exit)
-while menu.to_i!=0 do
-  # Caso a opção tenha sido 1, ou seja enviar dados.
-  connectionService(@servers,1) # abre a conexão com os servidores
-  receiveDatasFiles(@servers)
-  puts "Type your new Data" # Solicita o dado que o cliente deseja enviar.
-  line=gets.chomp # le o dado do cliente
+while (opc=menu.to_i)!=0 do
+  	# Caso a opção tenha sido 1, ou seja enviar dados.
+  	if(opc==1)
+  	  system "clear"
+	  connectionService(@servers,1) # abre a conexão com os servidores
+	  puts "Type your new Data" # Solicita o dado que o cliente deseja enviar.
+	  line=gets.chomp # le o dado do cliente
+	  #recupera os dados atuais do servidor.
+	  @dadosAtuais=receiveDatasFiles(@servers)
 
-  @log.write("Send message \"Change\" to servers")
-  # Envia a mensagem para o servidores que deseja alterar os dados
-  sendMsg(@servers,"change")
-  # Recebe a resposta dos servidores para a solicitação do change.
-  datas=received(@servers)
+	  @log.write("Send message \"Change\" to servers")
+	  # Envia a mensagem para o servidores que deseja alterar os dados
+	  sendMsg(@servers,"change")
+	  # Recebe a resposta dos servidores para a solicitação do change.
+	  datas=received(@servers)
 
-  @log.write("Checking if servers reply to change is OK")
-  # Verifica se a reposta que recebeu é a desejada, nesse caso OK
-  if(verifyAnswer(datas,"OK"))
-    @log.write("Send message \"commit\" to servers")
-    # Caso seja OK, envia a solicitação de commit para os servidores.
-    sendMsg(@servers,"commit")
+	  @log.write("Checking if servers reply to change is OK")
+	  # Verifica se a reposta que recebeu é a desejada, nesse caso OK
+	  if(verifyAnswer(datas,"OK"))
+	    @log.write("Send message \"commit\" to servers")
+	    # Caso seja OK, envia a solicitação de commit para os servidores.
+	    sendMsg(@servers,"commit")
 
-    # Recebe a resposta dos servidores para a solicitação de commit.
-    datas=received(@servers)
+	    # Recebe a resposta dos servidores para a solicitação de commit.
+	    datas=received(@servers)
 
-    @log.write("Checking if servers reply to commit is OK")
-    # Verifica se a reposta que recebeu é a desejada, nesse caso OK
-    if(verifyAnswer(datas,"OK"))
-      @log.write("Sending Data "+line+" to servers")
-      # Caso seja OK, envia o novo dado para os servidores.
-      sendMsg(@servers,"data:"+line)
+	    @log.write("Checking if servers reply to commit is OK")
+	    # Verifica se a reposta que recebeu é a desejada, nesse caso OK
+	    if(verifyAnswer(datas,"OK"))
+	      @log.write("Sending Data "+line+" to servers")
+	      # Caso seja OK, envia o novo dado para os servidores.
+	      sendMsg(@servers,"data:"+line)
 
-      # Recebe a resposta dos servidores para o envio do novo dado.
-      datas=received(@servers)
-      
-      @log.write("Checking if servers reply to data send is ACK")
-      # Se a resposta for diferente de OK, manda um abort para o server
-      if(!verifyAnswer(datas,"OK"))
-        @log.write("Servers reply to data send is a NOK, sending abort to servers to cancel commit")
-        sendMsg(@servers,"abort")
-      end
-    else
-      @log.write("Servers reply to commit is a NOK,sending abort to servers to cancel commit")
-      # Se a resposta for diferente de OK, manda um abort para o server
-      puts("Sending Abort")
-      sendMsg(@servers,"abort")
-    end
-  else
-    @log.write("Servers reply to commit is a NOK,sending abort to servers to cancel commit")
-    # Se a resposta for diferente de OK, manda um abort para o server
-    sendMsg(@servers,"abort")
-  end
-  # Após terminar todos os envios fecha a conexão com os servers.
-  connectionService(@servers)
+	      # Recebe a resposta dos servidores para o envio do novo dado.
+	      datas=received(@servers)
+	      
+	      @log.write("Checking if servers reply to data send is ACK")
+	      # Se a resposta for diferente de OK, manda um abort para o server
+	      if(!verifyAnswer(datas,"OK"))
+	        @log.write("Servers reply to data send is a NOK, sending abort to servers to cancel commit")
+	        sendMsg(@servers,"abort")
+	      end
+	    else
+	      @log.write("Servers reply to commit is a NOK,sending abort to servers to cancel commit")
+	      # Se a resposta for diferente de OK, manda um abort para o server
+	      puts("Sending Abort")
+	      sendMsg(@servers,"abort")
+	    end
+	  else
+	    @log.write("Servers reply to commit is a NOK,sending abort to servers to cancel commit")
+	    # Se a resposta for diferente de OK, manda um abort para o server
+	    sendMsg(@servers,"abort")
+	  end
+	  # Após terminar todos os envios fecha a conexão com os servers.
+	  connectionService(@servers)
+	  @dadosAtuais=receiveDatasFiles(@servers)
+	else
+		system "clear"
+		showMenuServer()
+	end
+
 end
 @log.write("Encerrando programa")
