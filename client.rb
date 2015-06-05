@@ -104,35 +104,47 @@ def received(servers)
   return datas # retorna essa lista para uso posterior
 end
 
+# Metodo que mostra o historico do servidor
 def showData(i)
 	system "clear"
+	# Mostra o historico de dados desse servidor
 	@log.write("Recuperando o conteudo do arquivo")
 	lines = IO.readlines("#{@servers[i].name}#{@servers[i].port}Data.txt")
 	@log.write("Escrevendo dados na tela")
 	lines.each do |line|
+		# Escreve cada dado do servidor
 		@log.write("Escrevendo dado #{line} para o cliente")
 		puts (line)
 	end
+	# Espera ate o cliente apertar o enter.
+	@log.write("Esperando o cliente pressionar a tecla enter ...")
 	puts "Press \"enter\" to back"
 	gets.chomp
 end
 
-
+# Metodo que mostra os servidores conectados, e que permite ao usuario escolher
+# qual deles ele deseja ver o historico
 def showMenuServer
+	# Lista para verificar se a opcao digitada pelo usuario eh valida
 	validOptions = []
 	validOptions << 0
 	loop do
+		# Limpa a tela do usuario.
 		system "clear"
 		i=1
+		# Lista os servidores e espera a opcao desejada do cliente
 		@log.write("Esperando cliente informar opcao desejada")
 	    puts "What server do you want to see data history ? If you want back press 0"
 	    @servers.each do |server|
+	    	@log.write("Servidores disponiveis => #{server.name}:#{server.port}")
 	  		puts "#{i}- servidor #{server.name}:#{server.port}"
+	  		# salva esse servidor como uma opção
 	  		validOptions << i
 	  		i+=1
 	  	end
 	  	begin
 	      option = Integer(gets.chomp)
+	      @log.write("Opcao digitada pelo cliente: #{option.to_s}")
 	    rescue
 	      # Caso o cliente algo nao numerico
 	      @log.write("O cliente digitou uma opcao nao numerica!","error")
@@ -146,6 +158,7 @@ def showMenuServer
 	        # le e retorna a opcao digitada pelo usuario
 	        @log.write("O cliente escolheu a opcao #{option}")
 	        if(option>0)
+	        	# Mostra o historico de dados desse servidor
 	        	showData(option-1)
 	        else
 	        	@log.write("Voltando ao menu inicial")
@@ -163,7 +176,9 @@ def menu
   loop do 
   	@log.write("Escrevendo os dados Atuais")
   	i=0
+  	# Lista o dado atual de cada servidor
   	@servers.each do |server|
+  		@log.write("Dado atual do servidor #{server.name}:#{server.port} => #{@dadosAtuais[i]}")
   		puts "Dado atual do servidor #{server.name}:#{server.port} => #{@dadosAtuais[i]}"
   		i+=1
   	end
@@ -214,9 +229,9 @@ def getServersPorts
       # Solicita a porta do servidor
       @log.write("Solictando para o cliente a porta do servidor #{@servers[i].name}")
       puts "Write the port of server "+@servers[i].name
-      @log.write("porta recebida: #{@servers[i].port}")
       begin
         @servers[i].port=Integer(gets.chomp)
+         @log.write("porta recebida: #{@servers[i].port}")
       rescue
         # Se o cliente digitar algo nao numerico, pede para digitar novamente
         @log.write("A porta recebida #{@servers[i].port} eh uma porta invalida, essa porta deve ser um numeral","error")
@@ -263,26 +278,32 @@ end
 # Metodo para que recebe do servidor as linhas do arquivo de dados
 def readLines(server)
 	lines=[]
+	# lista que contem as linhas recebidas pelo cliente
 	@log.write("Esperando pela resposta do servidor #{server.name}")
 	while (data= server.socket.recv(800).chomp)
-
+		# Verifica se a mensagem recebida eh EOF ou um dado
 		@log.write("Mensagem recebida #{data}")
 		if(data!="--+EOF+--")
+			# se for um dado salava na lista
 			lines << data
 			@log.write("Enviando OK para o servidor")
+			# e manda um ok para o servidor
 			server.socket.print "OK"
 			@log.write("OK enviado para o servidor")
 			
 		else
 			@log.write("Enviando OK para o servidor")
+			# Se for um EOF manda um ok para o servidor
 			server.socket.print "OK"
 			@log.write("OK enviado para o servidor")
 			break
 		end
 	end
 	@log.write("Mensagem EOF Recebida")
+	# Salva em um arquivo as linhas recebidas com o historioco atual do servidor
 	writeLinesInFile(server,lines)
 	@log.write("Retornando dado atual: #{lines.last}")
+	# Retorna o dado mais atual do servidor
 	return lines.last
 end
 
