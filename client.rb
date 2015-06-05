@@ -33,7 +33,6 @@ end
 
 # Método para enviar uma mensagem para o vetor de servers.
 def sendMsg(servers,msg)
-
   servers.each do |server|
     # para cada server do cliente, manda a mensagem passada como parametro
     @log.write("Enviando mensagem para o servidor #{server.name}")
@@ -53,26 +52,22 @@ end
 def verifyAnswer(msgsServer,msg)
   i=0
   msgsServer.each do |msgServer|
-    
     @log.write("Checking reply from server #{i}")
-    @log.write("Reply from server #{i}= #{msgServer}")
+    @log.write("Reply from server #{i}: #{msgServer}")
     # Para cada mensagem recebida dos servidores,
     # verifica se a mensagem do servidor eh igual a mensagem esperada
     if(msgServer!=msg)
     	@log.write("Resposta recebida do servidor #{i} eh diferente do esperado")
-    	@log.write("Resposta do servidor#{i}= #{msgServer}")
-    	@log.write("Resposta esperada= #{msg}")
-      #logger.error "Reply receiveid is different than expected"
-      #logger.error "Reply: "+msgServer
-      #logger.error "Expected reply"+msg
+    	@log.write("Resposta do servidor#{i}: #{msgServer}")
+    	@log.write("Resposta esperada: #{msg}")
       # Retorna falso se uma das mensagens do servidor 
-      #for diferente da mensagem esperada
+      # for diferente da mensagem esperada
     	return false
     end
     i+=1
   end
   @log.write("Respostas recebidas dos servidores estao de acordo com o esperado")
-  #logger.error "Everything is ok with the replies from servers"
+  # logger.error "Everything is ok with the replies from servers"
   # Retorna True, se todas as mensagem forem iguais a mensagem esperada.
   return true
 end
@@ -81,10 +76,9 @@ end
 # Metodo que espera a resposta do servidor 
 # para a mensagem enviada anteriormente no metodo sendMsg
 def waitFor(server,i)
-  #logger.error "Waiting server"+i+" reply"
   @log.write("Esperando pela resposta do servidor #{i}")
   data= server.recv(800)
-  # recebe o dado do servidor e compara se ele é um dos tres tipos:
+  # recebe o dado do servidor e compara se ele é um dos dois tipos:
   # OK -> Caso a mensagem tenha sido aceita pelo servidor
   # NOK -> Caso a mensagem tenha sido rejeitada pelo servidor
   if(data=="OK" || data=="NOK")
