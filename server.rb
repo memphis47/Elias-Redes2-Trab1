@@ -58,14 +58,36 @@ def writeFile(data,port)
 	end
 end
 
+def waitFor(client)
+  #logger.error "Waiting server"+i+" reply"
+  @log.write("Esperando pela resposta do cliente")
+  data= client.recv(800)
+  @log.write("Resposta recebida: #{data}")
+  # recebe o dado do servidor e compara se ele é um dos tres tipos:
+  # OK -> Caso a mensagem tenha sido aceita pelo servidor
+  # NOK -> Caso a mensagem tenha sido rejeitada pelo servidor
+  @log.write("Verificando se a resposta #{data} esta de acordo com o padrao esperado")
+  if(data=="OK" || data=="NOK")
+   	@log.write("Resposta recebida do cliente : #{data}")
+    #logger.error "Reply "+data+" received from the server"+i
+    # retorna a mensagem recebida pelo servidor.
+    return data
+  end
+  @log.write("Resposta recebida do cliente #{i} nao esta no padrao esperado")
+end
+
 def transferFile(client,port)
 	@log.write("Recuperando o conteudo do arquivo")
 	lines = IO.readlines("data#{port}.txt")
-	client.print("data#{port}.txt")
+	@log.write("Enviando arquivo para o cliente")
 	lines.each do |line|
+		@log.write("Enviando linha #{line} para o client")
 		client.print(line)
+		waitFor(client)
 	end
+	@log.write("Fim da transferencia do arquivo, enviando mensagem EOF para o cliente")
 	client.print("--+EOF+--")
+	waitFor(client)
 end
 
 # Cria arquivo para armazenar log
@@ -114,7 +136,7 @@ begin
 		# eh aberto uma thread para esse cliente.
 		@log.write("Iniciando escuta de clientes")
 		Thread.start(server.accept) do |client|
-			transferFile(client)
+			transferFile(client,port.to_s)
 			@log.write("Novo cliente aceito")
 			# ID que o cliente recebe quando se conecta com o servidor.
 			idc=clientNumber

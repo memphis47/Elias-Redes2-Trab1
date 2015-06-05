@@ -3,7 +3,7 @@ require './log.rb'
 require './serverClass.rb'
 
 #Numero de servidores em que o cliente ira se conectar.
-NSERVERS=1
+NSERVERS=3
 
 #Metodo que controla as conexoes que o cliente faz com o server.
 def connectionService(servers,open=0)
@@ -188,6 +188,52 @@ def getServersPorts
   @log.write("Connection to servers sucessful")
 end
 
+def writeLinesInFile(server,lines)
+	@log.write("Verificando se o arquivo #{server.name}#{server.port}Data.txt existe")
+	if !File.exists?("#{server.name}#{server.port}Data.txt")
+		@log.write("Arquivo #{server.name}#{server.port}Data.txt nao existe, criando arquivo data.txt")
+		# Caso nao exista cria um novo arquivo
+		file = File.new("#{server.name}#{server.port}Data.txt", File::CREAT|File::TRUNC|File::RDWR, 0644)
+		@log.write("Arquivo #{server.name}#{server.port}Data.txt criado com sucesso")
+	end
+	open("#{server.name}#{server.port}Data.txt", 'w') do |f|
+		# o dado salvo tem o formato [%H:%M:%S] dado
+		lines.each do |data|
+			@log.write("Escrevendo o dado #{data} no arquivo")
+			f << data << "\n"
+		end
+	end
+end
+
+def readLines(server)
+	lines=[]
+	@log.write("Esperando pela resposta do servidor #{server.name}")
+	while (data= server.socket.recv(800).chomp)
+
+		@log.write("Mensagem recebida #{data}")
+		if(data!="--+EOF+--")
+			lines << data
+			@log.write("Enviando OK para o servidor")
+			server.socket.print "OK"
+			@log.write("OK enviado para o servidor")
+		else
+			@log.write("Enviando OK para o servidor")
+			server.socket.print "OK"
+			@log.write("OK enviado para o servidor")
+			break
+		end
+	end
+	@log.write("Mensagem EOF Recebida")
+	writeLinesInFile(server,lines)
+end
+
+def receiveDatasFiles(servers)
+	@log.write("Recebendo dados atuais do servidor")
+	servers.each do |server|
+		readLines(server)
+	end
+end
+
 # Cria arquivo para armazenar log
 @log = Log.new("Client")
 
@@ -202,6 +248,7 @@ getServersPorts()
 while menu.to_i!=0 do
   # Caso a opção tenha sido 1, ou seja enviar dados.
   connectionService(@servers,1) # abre a conexão com os servidores
+  receiveDatasFiles(@servers)
   puts "Type your new Data" # Solicita o dado que o cliente deseja enviar.
   line=gets.chomp # le o dado do cliente
 
