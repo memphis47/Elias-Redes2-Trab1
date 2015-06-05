@@ -4,27 +4,27 @@ require 'thread'
 require 'resolv'
 
 # Metodo para verificar se o arquivo com dado atual do servidor existe
-def createFile
-	@log.write("Verificando se o arquivo data.txt existe")
-	if !File.exists?("data.txt")
-		@log.write("Arquivo data.txt nao existe, criando arquivo data.txt")
+def createFile(port)
+	@log.write("Verificando se o arquivo data#{port}.txt existe")
+	if !File.exists?("data#{port}.txt")
+		@log.write("Arquivo data#{port}.txt nao existe, criando arquivo data.txt")
 		# Caso nao exista cria um novo arquivo
-		file = File.new("data.txt", File::CREAT|File::TRUNC|File::RDWR, 0644)
-		@log.write("Arquivo data.txt criado com sucesso")
+		file = File.new("data#{port}.txt", File::CREAT|File::TRUNC|File::RDWR, 0644)
+		@log.write("Arquivo data#{port}.txt criado com sucesso")
 	end
 end
 
 # Metodo para ler o dado atual do arquivo
-def readData()
-	@log.write("Verificando se o arquivo data.txt possui dados")
-	if File.zero?("data.txt")
-		@log.write("Arquivo data.txt nao possui dados, escrevendo o dado: \"Dado inicial\" no arquivo")
+def readData(port)
+	@log.write("Verificando se o arquivo data#{port}.txt possui dados")
+	if File.zero?("data#{port}.txt")
+		@log.write("Arquivo data#{port}.txt nao possui dados, escrevendo o dado: \"Dado inicial\" no arquivo")
 		# Se nao houver nenhum dado escrito entao ele define o dado inicial
-		writeFile("Dado Inicial")
+		writeFile("Dado Inicial",port)
 	end
 	# Recupera todas as linhas do arquivo
 	@log.write("Recuperando o conteudo do arquivo")
-	lines = IO.readlines("data.txt")
+	lines = IO.readlines("data#{port}.txt")
 	# le o ultimo dado salvo, como o dado esta salvo no formato [%H:%M:%S] dado,
 	# usa-se o split para pegar apenas o dado
 	@log.write("lendo o dado atual")
@@ -35,10 +35,10 @@ def readData()
 end
 
 # Metodo para escrever o novo dado no servidor
-def writeFile(data)
+def writeFile(data,port)
 	# Abre o arquivo em append e escreve o novo dado nele
 	@log.write("Abrindo arquivo para a escrita")
-	open("data.txt", 'a') do |f|
+	open("data#{port}.txt", 'a') do |f|
 		# o dado salvo tem o formato [%H:%M:%S] dado
 		@log.write("Escrevendo o dado #{data} no arquivo")
 		f << Time.now.strftime("[%H:%M:%S] ") << data << "\n"
@@ -76,10 +76,10 @@ begin
 	server = TCPServer.new(name,port)
 	@log.write("Servidor aberto com sucesso")
 	#verifica se o arquivo com o dado atual mantido pelo servidor exite
-	createFile()
+	createFile(port.to_s)
 	# Recuperando Dado atual do servidor.
 	@log.write("definindo dado atual do servidor")
-	data=readData()
+	data=readData(port.to_s)
 	@log.write("dado atual do servidor: #{data}")
 	# Mostra o nome e a porta do servidor
 	puts "#{name}:#{port.to_s}"
@@ -147,7 +147,7 @@ begin
 					puts("To "+data)
 					# escreve no arquivo de dados o novo dado.
 					@log.write("Escrevendo no arquivo o novo dado")
-					writeFile(data)
+					writeFile(data,port.to_s)
 					
 					@log.write("Mandando a mensagem OK para o cliente")
 					# Responde com um OK para esse cliente
