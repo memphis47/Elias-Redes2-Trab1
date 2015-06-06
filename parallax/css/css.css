@@ -1,0 +1,171 @@
+*{
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+}
+body, html{
+	height: 100%;
+	width: 100%;
+	font-size: 62.5%;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	background: #000;
+	text-align:center;
+	color:#fff;
+}
+h1{
+	font-size: 4.5em
+}
+/* MENU */
+nav{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: 10px;
+	background: rgba(128,128,128,.7);
+	z-index:10;
+	transition: padding .5s
+}
+nav li{
+	display: inline;	
+	margin: 5px 10px;
+	
+}
+nav li a{
+	font-size: 3em;
+	color: #fff
+}
+a{
+  color:#ecf0f1;
+}
+a:hover{
+  color:#bdc3c7;
+}
+/* FIM MENU */
+
+.bg {
+  position: fixed;
+  background: url('../images/bg.png') no-repeat center center;
+  width: 100%;
+  height: 150%;
+  top:0;
+  left:0;
+  z-index: -1;
+}
+
+section#relatorio{
+	min-height: 100%;		
+}
+section#downloads{
+	min-height: 650px;
+}
+section#sobre, section#contato{
+	height: 300px;
+	font-size: 16px;
+	text-align: left;
+	position:relative;
+	z-index:2;
+	background: #0f0f0f;
+	padding:10%;
+}
+
+.titulo{
+	position: relative;
+	color: rgba(255,255,255,.5);
+	font-size: 2em;
+	margin-top: -35px;
+	transition: margin  2s,color 2s
+}
+.titulo:hover{
+	color: rgba(255,255,255,1);
+}
+article.center-content{
+	margin:0 auto;
+	width: 900px;
+}
+table{
+	width: 600px;
+	border:1px solid #fff;
+	margin: 0 auto;
+}
+tr:nth-child(odd){
+  border:1px solid #FFF;
+  background-color:#ecf0f1;
+  color:#000;
+}
+tr:nth-child(even){
+  border:1px solid #FFF;
+  background-color:#bdc3c7;
+  color:#000;
+}
+h3{
+  color: #FFF;
+}
+section#downloads{
+	background: #333;
+	margin-top: 25%;
+	font-size: 16px;
+	text-align: center;
+}
+article#downloads1{
+	padding-top: 2%
+}
+section#relatorio{
+	background: #2980b9;
+	font-size: 16px;
+	transform: skewY(-1.5deg);
+	margin-top: -5%;
+}
+article#relatorio1{
+	transform: skewY(1.9deg);
+	padding-top: 2%
+}
+section#contato{
+	background: #0f0f0f;
+	transform: skewY(2.5deg);
+	margin-top: 25%
+}
+article#contato1{
+	transform: skewY(-2.5deg);
+	padding-top: 2%;
+	color: #fff;
+}
+footer{
+	position: relative;
+	height: 7.5%;
+	background: #222;
+	z-index:2;
+	margin-top: -2%;
+	padding-top: 5em;
+	background: linear-gradient(#222, #000);
+	box-shadow: 2px -6px 3px rgba(0,0,0,.4)
+}
+footer span{
+	color: #fff;
+	font-size: 2em;
+}
+.ruby{
+	height: 150px;
+	width:100px;
+	display: inline-block;
+}
+.ruby img{
+	height: 100px;
+}
+.ruby a{
+	display: block;
+	width: inherit;
+}
+.arquivos{
+	width:600px;
+	margin: 0 auto;
+	padding: 10px;
+}
+#relatorio1 .ruby{
+	padding:10px;
+}
+.progress{
+  padding-right:2px;
+  width: 12px;
+  vertical-align: center;
+}

@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Redes 2 - Trabalho prático</title>
+<link href="css/css.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<nav id="menu">
+  <ul>
+    <li><a href="javascript: redirect_pg('#sobre')">Sobre</a></li>
+    <li><a href="javascript: redirect_pg('#downloads1')">Downloads</a></li>
+    <li><a href="javascript: redirect_pg('#relatorio1')">Relatorio</a></li>
+    <li><a href="javascript: redirect_pg('#contato1')">Contato</a></li>
+  </ul>
+</nav>
+<div class="bg"></div>
+<section id="sobre">
+  <article>
+    <h1 class="titulo">Trabalho prático de redes II</h1>
+    <h3>Desenvolvedores:</h3>
+    <ul>
+        <li>Alan Peterson Carvalho Silva;</li>
+        <li>Rafael Rocha de Carvalho.</li>
+    </ul>
+    <h3>Status</h3>
+    <p><img src="images/check.png" class="progress"/>Programa em Ruby: Concluído;</p>
+    <p><img src="images/check.png" class="progress"/>Logs de execuçãoo: Concluído;</p>
+    <p><img src="images/check.png" class="progress"/>Relatório: Concluído.</p>
+  </article>
+</section>
+<section id="downloads">
+  <article id="downloads1">
+    <article class="center-content">
+      <h3>Arquivos de código</h3>
+      <div class="arquivos">
+        <div class="ruby">
+          <a href="docs/client.rb.txt"  target="_blank">
+            <img src="images/ruby-icon.png"/>
+            <p>Cliente.rb</p>
+          </a>
+        </div>
+        <div class="ruby">
+          <a href="docs/server.rb.txt"  target="_blank">
+            <img src="images/ruby-icon.png"/>
+            <p>Servidor.rb</p>
+          </a>
+        </div>
+        <div class="ruby">
+          <a href="docs/serverClass.rb.txt"  target="_blank">
+            <img src="images/ruby-icon.png"/>
+            <p>serverClass.rb</p>
+          </a>
+        </div>
+        <div class="ruby">
+          <a href="docs/log.rb.txt"  target="_blank">
+            <img src="images/ruby-icon.png"/>
+            <p>Logger.rb</p>
+          </a>
+        </div>
+      </div>
+      <h3>Logs</h3>
+      <table>
+          <th>
+          Arquivo
+          </th>
+          <th width="50px">
+            Ver
+          </th>
+          <tr>
+              <td>Roteiro de execução</td>
+              <td><a href="docs/logs/logExecution.txt" target="_blank"><img src="images/down.png" height="20px" class="down"/></td>
+          </tr>
+          <tr>
+              <td>LogClient-1</td>
+              <td><a href="docs/logs/LogClient-05062015-215513.log"  target="_blank"><img src="images/down.png" height="20px" class="down"/></td>
+          </tr>
+          <tr>
+              <td>LogClient-2</td>
+              <td><a href="docs/logs/LogClient-05062015-215528.log"  target="_blank"><img src="images/down.png" height="20px" class="down"/></td>
+          </tr>
+          <tr>
+              <td>LogClient-3</td>
+              <td><a href="docs/logs/LogClient-05062015-215550.log"  target="_blank"><img src="images/down.png" height="20px" class="down"/></td>
+          </tr>
+          <tr>
+              <td>LogServer-1</td>
+              <td><a href="docs/logs/LogServer-05062015-215502.log"  target="_blank"><img src="images/down.png" height="20px" class="down"/></td>
+          </tr>
+          <tr>
+              <td>LogServer-2</td>
+              <td><a href="docs/logs/LogServer-05062015-215505.log"  target="_blank"><img src="images/down.png" height="20px" class="down"/></td>
+          </tr>
+          <tr>
+              <td>LogServer-3</td>
+              <td><a href="docs/logs/LogServer-05062015-215510.log"  target="_blank"><img src="images/down.png" height="20px" class="down"/></td>
+          </tr>
+          <tr>
+              <td>Dados armazenados pelo servidor 1</td>
+              <td><a href="docs/logs/data8000.txt"  target="_blank"><img src="images/down.png" height="20px" class="down"/></td>
+          </tr>
+          <tr>
+              <td>Dados armazenados pelo servidor 2</td>
+              <td><a href="docs/logs/data8500.txt"  target="_blank"><img src="images/down.png" height="20px" class="down"/></td>
+          </tr>
+          <tr>
+              <td>Dados armazenados pelo servidor 3</td>
+              <td><a href="docs/logs/data9000.txt"  target="_blank"><img src="images/down.png" height="20px" class="down"/></td>
+          </tr>
+      </table>
+    </article>
+  </article>
+</section>
+<section id="relatorio">
+  <article id="relatorio1">
+    <h3>Relatório</h3>
+    <div class="arquivos">
+      <div class="ruby">
+        <a href="docs/rel.pdf"  target="_blank">
+          <img src="images/pdf.png"/>
+          <p>Versão HTML</p>
+        </a>
+      </div>
+      <div class="ruby">
+        <a href="docs/rel.html"  target="_blank">
+          <img src="images/html.png"/>
+          <p>Versão HTML</p>
+        </a>
+      </div>
+    </div>
+  </article>
+</section>
+<section id="contato">
+  <article id="contato1">
+    <h3>E-mail</h3>
+    <ul>
+        <li><a href="mailto:apcs11@inf.ufpr.br">Alan P. C. Silva</a></li>
+        <li><a href="mailto:rrc10@inf.ufpr.br">Rafael R. Carvalho</a></li>
+    </ul>
+  </article>
+</section>
+<footer>
+	<span>apcs11 | rrc10</span>
+</footer>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script>
+$(window).scroll(function(){
+  	var scrolled = $(window).scrollTop();
+  		$('.bg').css('top',-(scrolled*0.04)+'px');
+		
+		if($(window).scrollTop() > 300){
+			$("#menu").css("padding","25px");			
+		}
+		else{
+			$("#menu").css("padding","10px");	
+		};		
+});
+function redirect_pg(x){
+	$('html, body').animate({
+		scrollTop: $(x).offset().top-50	
+	},1500)
+}
+</script>
+</body>
+</html>

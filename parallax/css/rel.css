@@ -1,0 +1,23 @@
+#tudo{
+	overflow:hidden;
+	font-family:Century Gothic;
+	text-align:justify;
+	width:900px;
+	margin:0 auto;
+}
+h2{
+	border-bottom:1px double #3498db;
+	text-align:center;
+}
+p{
+	text-indent: 45px;
+	line-height:1.5em;
+}
+p.code{
+	background-color: #ecf0f1;
+	margin: 10 auto;
+	width:300px;
+	padding:10px;
+	border-radius:5px;
+	font-family: monospace;
+}

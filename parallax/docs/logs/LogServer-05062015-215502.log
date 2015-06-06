@@ -1,0 +1,672 @@
+21:55:02 Info: ----------------------------------------------------------------------------------------
+21:55:02 Info: Inicio da execucao do servidor que mantem os dados salvos utilizando-se do protocolo 2PC
+21:55:02 Info: ----------------------------------------------------------------------------------------
+21:55:02 Info: definindo nome do servidor atraves do Socket.gethostname
+21:55:02 Info: Nome definido para o servidor: mint
+21:55:02 Info: Recebendo porta via parametro para o servidor mint
+21:55:02 Info: Porta recebida: 8000
+21:55:02 Info: Iniciando o servidor mint na porta 8000
+21:55:02 Info: Servidor aberto com sucesso
+21:55:02 Info: Verificando se o arquivo data8000.txt existe
+21:55:02 Info: Arquivo data8000.txt nao existe, criando arquivo data.txt
+21:55:02 Info: Arquivo data8000.txt criado com sucesso
+21:55:02 Info: definindo dado atual do servidor
+21:55:02 Info: Verificando se o arquivo data8000.txt possui dados
+21:55:02 Info: Arquivo data8000.txt nao possui dados, escrevendo o dado: "Dado inicial" no arquivo
+21:55:02 Info: Abrindo arquivo para a escrita
+21:55:02 Info: Escrevendo o dado Dado Inicial no arquivo
+21:55:02 Info: Recuperando o conteudo do arquivo
+21:55:02 Info: lendo o dado atual
+21:55:02 Info: dado atual: Dado Inicial
+
+21:55:02 Info: dado atual do servidor: Dado Inicial
+
+21:55:02 Info: Iniciando escuta de clientes
+21:55:18 Info: Novo cliente aceito
+21:55:18 Info: Esperando mensagem do cliente
+21:55:24 Info: Mensagem recebida do cliente 1
+21:55:24 Info: Mensagem recebida: refresh
+21:55:24 Info: Verificando mensagem recebida
+21:55:24 Info: Transferindo Arquivo Para o cliente
+21:55:24 Info: Recuperando o conteudo do arquivo
+21:55:24 Info: Enviando arquivo para o cliente
+21:55:24 Info: Enviando linha [21:55:02] Dado Inicial
+ para o client
+21:55:24 Info: Esperando pela resposta do cliente
+21:55:24 Info: Resposta recebida: OK
+21:55:24 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:55:24 Info: Resposta recebida do cliente : OK
+21:55:24 Info: Fim da transferencia do arquivo, enviando mensagem EOF para o cliente
+21:55:24 Info: Esperando pela resposta do cliente
+21:55:24 Info: Resposta recebida: OK
+21:55:24 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:55:24 Info: Resposta recebida do cliente : OK
+21:55:25 Info: Mensagem recebida do cliente 1
+21:55:25 Info: Mensagem recebida: refresh
+21:55:25 Info: Verificando mensagem recebida
+21:55:25 Info: Transferindo Arquivo Para o cliente
+21:55:25 Info: Recuperando o conteudo do arquivo
+21:55:25 Info: Enviando arquivo para o cliente
+21:55:25 Info: Enviando linha [21:55:02] Dado Inicial
+ para o client
+21:55:25 Info: Esperando pela resposta do cliente
+21:55:25 Info: Resposta recebida: OK
+21:55:25 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:55:25 Info: Resposta recebida do cliente : OK
+21:55:25 Info: Fim da transferencia do arquivo, enviando mensagem EOF para o cliente
+21:55:25 Info: Esperando pela resposta do cliente
+21:55:25 Info: Resposta recebida: OK
+21:55:25 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:55:25 Info: Resposta recebida do cliente : OK
+21:55:45 Info: Novo cliente aceito
+21:55:45 Info: Esperando mensagem do cliente
+21:55:45 Info: Mensagem recebida do cliente 2
+21:55:45 Info: Mensagem recebida: refresh
+21:55:45 Info: Verificando mensagem recebida
+21:55:45 Info: Transferindo Arquivo Para o cliente
+21:55:45 Info: Recuperando o conteudo do arquivo
+21:55:45 Info: Enviando arquivo para o cliente
+21:55:45 Info: Enviando linha [21:55:02] Dado Inicial
+ para o client
+21:55:45 Info: Esperando pela resposta do cliente
+21:55:45 Info: Resposta recebida: OK
+21:55:45 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:55:45 Info: Resposta recebida do cliente : OK
+21:55:45 Info: Fim da transferencia do arquivo, enviando mensagem EOF para o cliente
+21:55:45 Info: Esperando pela resposta do cliente
+21:55:45 Info: Resposta recebida: OK
+21:55:45 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:55:45 Info: Resposta recebida do cliente : OK
+21:55:46 Info: Mensagem recebida do cliente 2
+21:55:46 Info: Mensagem recebida: refresh
+21:55:46 Info: Verificando mensagem recebida
+21:55:46 Info: Transferindo Arquivo Para o cliente
+21:55:46 Info: Recuperando o conteudo do arquivo
+21:55:46 Info: Enviando arquivo para o cliente
+21:55:46 Info: Enviando linha [21:55:02] Dado Inicial
+ para o client
+21:55:46 Info: Esperando pela resposta do cliente
+21:55:46 Info: Resposta recebida: OK
+21:55:46 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:55:46 Info: Resposta recebida do cliente : OK
+21:55:46 Info: Fim da transferencia do arquivo, enviando mensagem EOF para o cliente
+21:55:46 Info: Esperando pela resposta do cliente
+21:55:46 Info: Resposta recebida: OK
+21:55:46 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:55:46 Info: Resposta recebida do cliente : OK
+21:56:05 Info: Novo cliente aceito
+21:56:05 Info: Esperando mensagem do cliente
+21:56:09 Info: Mensagem recebida do cliente 3
+21:56:09 Info: Mensagem recebida: refresh
+21:56:09 Info: Verificando mensagem recebida
+21:56:09 Info: Transferindo Arquivo Para o cliente
+21:56:09 Info: Recuperando o conteudo do arquivo
+21:56:09 Info: Enviando arquivo para o cliente
+21:56:09 Info: Enviando linha [21:55:02] Dado Inicial
+ para o client
+21:56:09 Info: Esperando pela resposta do cliente
+21:56:09 Info: Resposta recebida: OK
+21:56:09 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:56:09 Info: Resposta recebida do cliente : OK
+21:56:09 Info: Fim da transferencia do arquivo, enviando mensagem EOF para o cliente
+21:56:09 Info: Esperando pela resposta do cliente
+21:56:09 Info: Resposta recebida: OK
+21:56:09 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:56:09 Info: Resposta recebida do cliente : OK
+21:56:10 Info: Mensagem recebida do cliente 3
+21:56:10 Info: Mensagem recebida: refresh
+21:56:10 Info: Verificando mensagem recebida
+21:56:10 Info: Transferindo Arquivo Para o cliente
+21:56:10 Info: Recuperando o conteudo do arquivo
+21:56:10 Info: Enviando arquivo para o cliente
+21:56:10 Info: Enviando linha [21:55:02] Dado Inicial
+ para o client
+21:56:10 Info: Esperando pela resposta do cliente
+21:56:10 Info: Resposta recebida: OK
+21:56:10 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:56:10 Info: Resposta recebida do cliente : OK
+21:56:10 Info: Fim da transferencia do arquivo, enviando mensagem EOF para o cliente
+21:56:10 Info: Esperando pela resposta do cliente
+21:56:10 Info: Resposta recebida: OK
+21:56:10 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:56:10 Info: Resposta recebida do cliente : OK
+21:56:19 Info: Novo cliente aceito
+21:56:19 Info: Esperando mensagem do cliente
+21:56:23 Info: Mensagem recebida do cliente 4
+21:56:23 Info: Mensagem recebida: refresh
+21:56:23 Info: Verificando mensagem recebida
+21:56:23 Info: Transferindo Arquivo Para o cliente
+21:56:23 Info: Recuperando o conteudo do arquivo
+21:56:23 Info: Enviando arquivo para o cliente
+21:56:23 Info: Enviando linha [21:55:02] Dado Inicial
+ para o client
+21:56:23 Info: Esperando pela resposta do cliente
+21:56:23 Info: Resposta recebida: OK
+21:56:23 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:56:23 Info: Resposta recebida do cliente : OK
+21:56:23 Info: Fim da transferencia do arquivo, enviando mensagem EOF para o cliente
+21:56:23 Info: Esperando pela resposta do cliente
+21:56:23 Info: Resposta recebida: OK
+21:56:23 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:56:23 Info: Resposta recebida do cliente : OK
+21:56:24 Info: Mensagem recebida do cliente 4
+21:56:24 Info: Mensagem recebida: change
+21:56:24 Info: Verificando mensagem recebida
+21:56:24 Info: A Mensagem recebida foi um "change" e o servidor esta livre para que cliente possa escrever
+21:56:24 Info: Enviando a mensagem OK para o cliente
+21:56:25 Info: Mensagem recebida do cliente 4
+21:56:25 Info: Mensagem recebida: commit
+21:56:25 Info: Verificando mensagem recebida
+21:56:25 Info: A Mensagem recebida foi um "commit"
+21:56:25 Info: Mandando a mensagem OK para o cliente
+21:56:26 Info: Mensagem recebida do cliente 4
+21:56:26 Info: Mensagem recebida: data:casa
+21:56:26 Info: Verificando mensagem recebida
+21:56:26 Info: A Mensagem recebida foi o novo dado a ser mantido
+21:56:26 Info: Trocando dado atual de Dado Inicial
+
+21:56:26 Info: para casa
+21:56:26 Info: Escrevendo no arquivo o novo dado
+21:56:26 Info: Abrindo arquivo para a escrita
+21:56:26 Info: Escrevendo o dado casa no arquivo
+21:56:26 Info: Mandando a mensagem OK para o cliente
+21:56:26 Info: Liberando o servidor para novo uso
+21:56:26 Info: Novo cliente aceito
+21:56:26 Info: Esperando mensagem do cliente
+21:56:26 Info: Mensagem recebida do cliente 5
+21:56:26 Info: Mensagem recebida: refresh
+21:56:26 Info: Verificando mensagem recebida
+21:56:26 Info: Transferindo Arquivo Para o cliente
+21:56:26 Info: Recuperando o conteudo do arquivo
+21:56:26 Info: Enviando arquivo para o cliente
+21:56:26 Info: Enviando linha [21:55:02] Dado Inicial
+ para o client
+21:56:26 Info: Esperando pela resposta do cliente
+21:56:26 Info: Resposta recebida: OK
+21:56:26 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:56:26 Info: Resposta recebida do cliente : OK
+21:56:26 Info: Enviando linha [21:56:26] casa
+ para o client
+21:56:26 Info: Esperando pela resposta do cliente
+21:56:26 Info: Resposta recebida: OK
+21:56:26 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:56:26 Info: Resposta recebida do cliente : OK
+21:56:26 Info: Fim da transferencia do arquivo, enviando mensagem EOF para o cliente
+21:56:26 Info: Esperando pela resposta do cliente
+21:56:26 Info: Resposta recebida: OK
+21:56:26 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:56:26 Info: Resposta recebida do cliente : OK
+21:56:43 Info: Novo cliente aceito
+21:56:43 Info: Esperando mensagem do cliente
+21:56:46 Info: Mensagem recebida do cliente 6
+21:56:46 Info: Mensagem recebida: refresh
+21:56:46 Info: Verificando mensagem recebida
+21:56:46 Info: Transferindo Arquivo Para o cliente
+21:56:46 Info: Recuperando o conteudo do arquivo
+21:56:46 Info: Enviando arquivo para o cliente
+21:56:46 Info: Enviando linha [21:55:02] Dado Inicial
+ para o client
+21:56:46 Info: Esperando pela resposta do cliente
+21:56:46 Info: Resposta recebida: OK
+21:56:46 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:56:46 Info: Resposta recebida do cliente : OK
+21:56:46 Info: Enviando linha [21:56:26] casa
+ para o client
+21:56:46 Info: Esperando pela resposta do cliente
+21:56:46 Info: Resposta recebida: OK
+21:56:46 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:56:46 Info: Resposta recebida do cliente : OK
+21:56:46 Info: Fim da transferencia do arquivo, enviando mensagem EOF para o cliente
+21:56:46 Info: Esperando pela resposta do cliente
+21:56:46 Info: Resposta recebida: OK
+21:56:46 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:56:46 Info: Resposta recebida do cliente : OK
+21:56:47 Info: Mensagem recebida do cliente 6
+21:56:47 Info: Mensagem recebida: change
+21:56:47 Info: Verificando mensagem recebida
+21:56:47 Info: A Mensagem recebida foi um "change" e o servidor esta livre para que cliente possa escrever
+21:56:47 Info: Enviando a mensagem OK para o cliente
+21:56:48 Info: Mensagem recebida do cliente 6
+21:56:48 Info: Mensagem recebida: commit
+21:56:48 Info: Verificando mensagem recebida
+21:56:48 Info: A Mensagem recebida foi um "commit"
+21:56:48 Info: Mandando a mensagem OK para o cliente
+21:56:49 Info: Mensagem recebida do cliente 6
+21:56:49 Info: Mensagem recebida: data:apartamento
+21:56:49 Info: Verificando mensagem recebida
+21:56:49 Info: A Mensagem recebida foi o novo dado a ser mantido
+21:56:49 Info: Trocando dado atual de casa
+21:56:49 Info: para apartamento
+21:56:49 Info: Escrevendo no arquivo o novo dado
+21:56:49 Info: Abrindo arquivo para a escrita
+21:56:49 Info: Escrevendo o dado apartamento no arquivo
+21:56:49 Info: Mandando a mensagem OK para o cliente
+21:56:49 Info: Liberando o servidor para novo uso
+21:56:49 Info: Novo cliente aceito
+21:56:49 Info: Esperando mensagem do cliente
+21:56:49 Info: Mensagem recebida do cliente 7
+21:56:49 Info: Mensagem recebida: refresh
+21:56:49 Info: Verificando mensagem recebida
+21:56:49 Info: Transferindo Arquivo Para o cliente
+21:56:49 Info: Recuperando o conteudo do arquivo
+21:56:49 Info: Enviando arquivo para o cliente
+21:56:49 Info: Enviando linha [21:55:02] Dado Inicial
+ para o client
+21:56:49 Info: Esperando pela resposta do cliente
+21:56:49 Info: Resposta recebida: OK
+21:56:49 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:56:49 Info: Resposta recebida do cliente : OK
+21:56:49 Info: Enviando linha [21:56:26] casa
+ para o client
+21:56:49 Info: Esperando pela resposta do cliente
+21:56:49 Info: Resposta recebida: OK
+21:56:49 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:56:49 Info: Resposta recebida do cliente : OK
+21:56:49 Info: Enviando linha [21:56:49] apartamento
+ para o client
+21:56:49 Info: Esperando pela resposta do cliente
+21:56:49 Info: Resposta recebida: OK
+21:56:49 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:56:49 Info: Resposta recebida do cliente : OK
+21:56:49 Info: Fim da transferencia do arquivo, enviando mensagem EOF para o cliente
+21:56:49 Info: Esperando pela resposta do cliente
+21:56:49 Info: Resposta recebida: OK
+21:56:49 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:56:49 Info: Resposta recebida do cliente : OK
+21:56:53 Info: Novo cliente aceito
+21:56:53 Info: Esperando mensagem do cliente
+21:56:55 Info: Mensagem recebida do cliente 8
+21:56:55 Info: Mensagem recebida: refresh
+21:56:55 Info: Verificando mensagem recebida
+21:56:55 Info: Transferindo Arquivo Para o cliente
+21:56:55 Info: Recuperando o conteudo do arquivo
+21:56:55 Info: Enviando arquivo para o cliente
+21:56:55 Info: Enviando linha [21:55:02] Dado Inicial
+ para o client
+21:56:55 Info: Esperando pela resposta do cliente
+21:56:55 Info: Resposta recebida: OK
+21:56:55 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:56:55 Info: Resposta recebida do cliente : OK
+21:56:55 Info: Enviando linha [21:56:26] casa
+ para o client
+21:56:55 Info: Esperando pela resposta do cliente
+21:56:55 Info: Resposta recebida: OK
+21:56:55 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:56:55 Info: Resposta recebida do cliente : OK
+21:56:55 Info: Enviando linha [21:56:49] apartamento
+ para o client
+21:56:55 Info: Esperando pela resposta do cliente
+21:56:55 Info: Resposta recebida: OK
+21:56:55 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:56:55 Info: Resposta recebida do cliente : OK
+21:56:55 Info: Fim da transferencia do arquivo, enviando mensagem EOF para o cliente
+21:56:55 Info: Esperando pela resposta do cliente
+21:56:55 Info: Resposta recebida: OK
+21:56:55 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:56:55 Info: Resposta recebida do cliente : OK
+21:56:56 Info: Mensagem recebida do cliente 8
+21:56:56 Info: Mensagem recebida: change
+21:56:56 Info: Verificando mensagem recebida
+21:56:56 Info: A Mensagem recebida foi um "change" e o servidor esta livre para que cliente possa escrever
+21:56:56 Info: Enviando a mensagem OK para o cliente
+21:56:57 Info: Mensagem recebida do cliente 8
+21:56:57 Info: Mensagem recebida: commit
+21:56:57 Info: Verificando mensagem recebida
+21:56:57 Info: A Mensagem recebida foi um "commit"
+21:56:57 Info: Mandando a mensagem OK para o cliente
+21:56:58 Info: Mensagem recebida do cliente 8
+21:56:58 Info: Mensagem recebida: data:flat
+21:56:58 Info: Verificando mensagem recebida
+21:56:58 Info: A Mensagem recebida foi o novo dado a ser mantido
+21:56:58 Info: Trocando dado atual de apartamento
+21:56:58 Info: para flat
+21:56:58 Info: Escrevendo no arquivo o novo dado
+21:56:58 Info: Abrindo arquivo para a escrita
+21:56:58 Info: Escrevendo o dado flat no arquivo
+21:56:58 Info: Mandando a mensagem OK para o cliente
+21:56:58 Info: Liberando o servidor para novo uso
+21:56:58 Info: Novo cliente aceito
+21:56:58 Info: Esperando mensagem do cliente
+21:56:58 Info: Mensagem recebida do cliente 9
+21:56:58 Info: Mensagem recebida: refresh
+21:56:58 Info: Verificando mensagem recebida
+21:56:58 Info: Transferindo Arquivo Para o cliente
+21:56:58 Info: Recuperando o conteudo do arquivo
+21:56:58 Info: Enviando arquivo para o cliente
+21:56:58 Info: Enviando linha [21:55:02] Dado Inicial
+ para o client
+21:56:58 Info: Esperando pela resposta do cliente
+21:56:58 Info: Resposta recebida: OK
+21:56:58 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:56:58 Info: Resposta recebida do cliente : OK
+21:56:58 Info: Enviando linha [21:56:26] casa
+ para o client
+21:56:58 Info: Esperando pela resposta do cliente
+21:56:58 Info: Resposta recebida: OK
+21:56:58 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:56:58 Info: Resposta recebida do cliente : OK
+21:56:58 Info: Enviando linha [21:56:49] apartamento
+ para o client
+21:56:58 Info: Esperando pela resposta do cliente
+21:56:58 Info: Resposta recebida: OK
+21:56:58 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:56:58 Info: Resposta recebida do cliente : OK
+21:56:58 Info: Enviando linha [21:56:58] flat
+ para o client
+21:56:58 Info: Esperando pela resposta do cliente
+21:56:58 Info: Resposta recebida: OK
+21:56:58 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:56:58 Info: Resposta recebida do cliente : OK
+21:56:58 Info: Fim da transferencia do arquivo, enviando mensagem EOF para o cliente
+21:56:58 Info: Esperando pela resposta do cliente
+21:56:58 Info: Resposta recebida: OK
+21:56:58 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:56:58 Info: Resposta recebida do cliente : OK
+21:57:12 Info: Novo cliente aceito
+21:57:12 Info: Esperando mensagem do cliente
+21:57:13 Info: Novo cliente aceito
+21:57:13 Info: Esperando mensagem do cliente
+21:57:32 Info: Mensagem recebida do cliente 10
+21:57:32 Info: Mensagem recebida: refresh
+21:57:32 Info: Verificando mensagem recebida
+21:57:32 Info: Transferindo Arquivo Para o cliente
+21:57:32 Info: Recuperando o conteudo do arquivo
+21:57:32 Info: Enviando arquivo para o cliente
+21:57:32 Info: Enviando linha [21:55:02] Dado Inicial
+ para o client
+21:57:32 Info: Esperando pela resposta do cliente
+21:57:32 Info: Resposta recebida: OK
+21:57:32 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:57:32 Info: Resposta recebida do cliente : OK
+21:57:32 Info: Enviando linha [21:56:26] casa
+ para o client
+21:57:32 Info: Esperando pela resposta do cliente
+21:57:32 Info: Resposta recebida: OK
+21:57:32 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:57:32 Info: Resposta recebida do cliente : OK
+21:57:32 Info: Enviando linha [21:56:49] apartamento
+ para o client
+21:57:32 Info: Esperando pela resposta do cliente
+21:57:32 Info: Resposta recebida: OK
+21:57:32 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:57:32 Info: Resposta recebida do cliente : OK
+21:57:32 Info: Enviando linha [21:56:58] flat
+ para o client
+21:57:32 Info: Esperando pela resposta do cliente
+21:57:32 Info: Resposta recebida: OK
+21:57:32 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:57:32 Info: Resposta recebida do cliente : OK
+21:57:32 Info: Fim da transferencia do arquivo, enviando mensagem EOF para o cliente
+21:57:32 Info: Esperando pela resposta do cliente
+21:57:32 Info: Resposta recebida: OK
+21:57:32 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:57:32 Info: Resposta recebida do cliente : OK
+21:57:32 Info: Mensagem recebida do cliente 11
+21:57:32 Info: Mensagem recebida: refresh
+21:57:32 Info: Verificando mensagem recebida
+21:57:32 Info: Transferindo Arquivo Para o cliente
+21:57:32 Info: Recuperando o conteudo do arquivo
+21:57:32 Info: Enviando arquivo para o cliente
+21:57:32 Info: Enviando linha [21:55:02] Dado Inicial
+ para o client
+21:57:32 Info: Esperando pela resposta do cliente
+21:57:32 Info: Resposta recebida: OK
+21:57:32 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:57:32 Info: Resposta recebida do cliente : OK
+21:57:32 Info: Enviando linha [21:56:26] casa
+ para o client
+21:57:32 Info: Esperando pela resposta do cliente
+21:57:32 Info: Resposta recebida: OK
+21:57:32 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:57:32 Info: Resposta recebida do cliente : OK
+21:57:32 Info: Enviando linha [21:56:49] apartamento
+ para o client
+21:57:32 Info: Esperando pela resposta do cliente
+21:57:32 Info: Resposta recebida: OK
+21:57:32 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:57:32 Info: Resposta recebida do cliente : OK
+21:57:32 Info: Enviando linha [21:56:58] flat
+ para o client
+21:57:32 Info: Esperando pela resposta do cliente
+21:57:32 Info: Resposta recebida: OK
+21:57:32 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:57:32 Info: Resposta recebida do cliente : OK
+21:57:32 Info: Fim da transferencia do arquivo, enviando mensagem EOF para o cliente
+21:57:32 Info: Esperando pela resposta do cliente
+21:57:32 Info: Resposta recebida: OK
+21:57:32 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:57:32 Info: Resposta recebida do cliente : OK
+21:57:33 Info: Mensagem recebida do cliente 10
+21:57:33 Info: Mensagem recebida: change
+21:57:33 Info: Verificando mensagem recebida
+21:57:33 Info: A Mensagem recebida foi um "change" e o servidor esta livre para que cliente possa escrever
+21:57:33 Info: Enviando a mensagem OK para o cliente
+21:57:33 Info: Mensagem recebida do cliente 11
+21:57:33 Info: Mensagem recebida: change
+21:57:33 Info: Verificando mensagem recebida
+21:57:33 Info: A Mensagem recebida foi um "change" e o servidor esta bloqueado para que cliente possa escrever
+21:57:33 Info: Enviando a mensagem NOK para o cliente
+21:57:33 Info: Novo cliente aceito
+21:57:33 Info: Esperando mensagem do cliente
+21:57:33 Info: Mensagem recebida do cliente 12
+21:57:33 Info: Mensagem recebida: refresh
+21:57:33 Info: Verificando mensagem recebida
+21:57:33 Info: Transferindo Arquivo Para o cliente
+21:57:33 Info: Recuperando o conteudo do arquivo
+21:57:33 Info: Enviando arquivo para o cliente
+21:57:33 Info: Enviando linha [21:55:02] Dado Inicial
+ para o client
+21:57:33 Info: Esperando pela resposta do cliente
+21:57:33 Info: Resposta recebida: OK
+21:57:33 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:57:33 Info: Resposta recebida do cliente : OK
+21:57:33 Info: Enviando linha [21:56:26] casa
+ para o client
+21:57:33 Info: Esperando pela resposta do cliente
+21:57:33 Info: Resposta recebida: OK
+21:57:33 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:57:33 Info: Resposta recebida do cliente : OK
+21:57:33 Info: Enviando linha [21:56:49] apartamento
+ para o client
+21:57:33 Info: Esperando pela resposta do cliente
+21:57:33 Info: Resposta recebida: OK
+21:57:33 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:57:33 Info: Resposta recebida do cliente : OK
+21:57:33 Info: Enviando linha [21:56:58] flat
+ para o client
+21:57:33 Info: Esperando pela resposta do cliente
+21:57:33 Info: Resposta recebida: OK
+21:57:33 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:57:33 Info: Resposta recebida do cliente : OK
+21:57:33 Info: Fim da transferencia do arquivo, enviando mensagem EOF para o cliente
+21:57:33 Info: Esperando pela resposta do cliente
+21:57:33 Info: Resposta recebida: OK
+21:57:33 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:57:33 Info: Resposta recebida do cliente : OK
+21:57:34 Info: Mensagem recebida do cliente 10
+21:57:34 Info: Mensagem recebida: commit
+21:57:34 Info: Verificando mensagem recebida
+21:57:34 Info: A Mensagem recebida foi um "commit"
+21:57:34 Info: Mandando a mensagem OK para o cliente
+21:57:34 Info: Mensagem recebida do cliente 11
+21:57:34 Info: Mensagem recebida: abort
+21:57:34 Info: Verificando mensagem recebida
+21:57:34 Info: A Mensagem recebida foi um "abort", o servidor ira abortar a operacao atual
+21:57:34 Info: Mandando a mensagem OK para o cliente
+21:57:35 Info: Mensagem recebida do cliente 10
+21:57:35 Info: Mensagem recebida: data:sobrado
+21:57:35 Info: Verificando mensagem recebida
+21:57:35 Info: A Mensagem recebida foi o novo dado a ser mantido
+21:57:35 Info: Trocando dado atual de flat
+21:57:35 Info: para sobrado
+21:57:35 Info: Escrevendo no arquivo o novo dado
+21:57:35 Info: Abrindo arquivo para a escrita
+21:57:35 Info: Escrevendo o dado sobrado no arquivo
+21:57:35 Info: Mandando a mensagem OK para o cliente
+21:57:35 Info: Liberando o servidor para novo uso
+21:57:35 Info: Novo cliente aceito
+21:57:35 Info: Esperando mensagem do cliente
+21:57:35 Info: Mensagem recebida do cliente 13
+21:57:35 Info: Mensagem recebida: refresh
+21:57:35 Info: Verificando mensagem recebida
+21:57:35 Info: Transferindo Arquivo Para o cliente
+21:57:35 Info: Recuperando o conteudo do arquivo
+21:57:35 Info: Enviando arquivo para o cliente
+21:57:35 Info: Enviando linha [21:55:02] Dado Inicial
+ para o client
+21:57:35 Info: Esperando pela resposta do cliente
+21:57:35 Info: Resposta recebida: OK
+21:57:35 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:57:35 Info: Resposta recebida do cliente : OK
+21:57:35 Info: Enviando linha [21:56:26] casa
+ para o client
+21:57:35 Info: Esperando pela resposta do cliente
+21:57:35 Info: Resposta recebida: OK
+21:57:35 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:57:35 Info: Resposta recebida do cliente : OK
+21:57:35 Info: Enviando linha [21:56:49] apartamento
+ para o client
+21:57:35 Info: Esperando pela resposta do cliente
+21:57:35 Info: Resposta recebida: OK
+21:57:35 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:57:35 Info: Resposta recebida do cliente : OK
+21:57:35 Info: Enviando linha [21:56:58] flat
+ para o client
+21:57:35 Info: Esperando pela resposta do cliente
+21:57:35 Info: Resposta recebida: OK
+21:57:35 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:57:35 Info: Resposta recebida do cliente : OK
+21:57:35 Info: Enviando linha [21:57:35] sobrado
+ para o client
+21:57:35 Info: Esperando pela resposta do cliente
+21:57:35 Info: Resposta recebida: OK
+21:57:35 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:57:35 Info: Resposta recebida do cliente : OK
+21:57:35 Info: Fim da transferencia do arquivo, enviando mensagem EOF para o cliente
+21:57:35 Info: Esperando pela resposta do cliente
+21:57:35 Info: Resposta recebida: OK
+21:57:35 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+21:57:35 Info: Resposta recebida do cliente : OK
+22:00:05 Info: Mensagem recebida do cliente 7
+22:00:06 Info: Mensagem recebida: refresh
+22:00:06 Info: Verificando mensagem recebida
+22:00:06 Info: Transferindo Arquivo Para o cliente
+22:00:06 Info: Recuperando o conteudo do arquivo
+22:00:06 Info: Enviando arquivo para o cliente
+22:00:06 Info: Enviando linha [21:55:02] Dado Inicial
+ para o client
+22:00:06 Info: Esperando pela resposta do cliente
+22:00:06 Info: Resposta recebida: OK
+22:00:06 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+22:00:06 Info: Resposta recebida do cliente : OK
+22:00:06 Info: Enviando linha [21:56:26] casa
+ para o client
+22:00:06 Info: Esperando pela resposta do cliente
+22:00:06 Info: Resposta recebida: OK
+22:00:06 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+22:00:06 Info: Resposta recebida do cliente : OK
+22:00:06 Info: Enviando linha [21:56:49] apartamento
+ para o client
+22:00:06 Info: Esperando pela resposta do cliente
+22:00:06 Info: Resposta recebida: OK
+22:00:06 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+22:00:06 Info: Resposta recebida do cliente : OK
+22:00:06 Info: Enviando linha [21:56:58] flat
+ para o client
+22:00:06 Info: Esperando pela resposta do cliente
+22:00:06 Info: Resposta recebida: OK
+22:00:06 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+22:00:06 Info: Resposta recebida do cliente : OK
+22:00:06 Info: Enviando linha [21:57:35] sobrado
+ para o client
+22:00:06 Info: Esperando pela resposta do cliente
+22:00:06 Info: Resposta recebida: OK
+22:00:06 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+22:00:06 Info: Resposta recebida do cliente : OK
+22:00:06 Info: Fim da transferencia do arquivo, enviando mensagem EOF para o cliente
+22:00:06 Info: Esperando pela resposta do cliente
+22:00:06 Info: Resposta recebida: OK
+22:00:06 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+22:00:06 Info: Resposta recebida do cliente : OK
+22:00:23 Info: Mensagem recebida do cliente 12
+22:00:23 Info: Mensagem recebida: refresh
+22:00:23 Info: Verificando mensagem recebida
+22:00:23 Info: Transferindo Arquivo Para o cliente
+22:00:23 Info: Recuperando o conteudo do arquivo
+22:00:23 Info: Enviando arquivo para o cliente
+22:00:23 Info: Enviando linha [21:55:02] Dado Inicial
+ para o client
+22:00:23 Info: Esperando pela resposta do cliente
+22:00:23 Info: Resposta recebida: OK
+22:00:23 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+22:00:23 Info: Resposta recebida do cliente : OK
+22:00:23 Info: Enviando linha [21:56:26] casa
+ para o client
+22:00:23 Info: Esperando pela resposta do cliente
+22:00:23 Info: Resposta recebida: OK
+22:00:23 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+22:00:23 Info: Resposta recebida do cliente : OK
+22:00:23 Info: Enviando linha [21:56:49] apartamento
+ para o client
+22:00:23 Info: Esperando pela resposta do cliente
+22:00:23 Info: Resposta recebida: OK
+22:00:23 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+22:00:23 Info: Resposta recebida do cliente : OK
+22:00:23 Info: Enviando linha [21:56:58] flat
+ para o client
+22:00:23 Info: Esperando pela resposta do cliente
+22:00:23 Info: Resposta recebida: OK
+22:00:23 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+22:00:23 Info: Resposta recebida do cliente : OK
+22:00:23 Info: Enviando linha [21:57:35] sobrado
+ para o client
+22:00:23 Info: Esperando pela resposta do cliente
+22:00:23 Info: Resposta recebida: OK
+22:00:23 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+22:00:23 Info: Resposta recebida do cliente : OK
+22:00:23 Info: Fim da transferencia do arquivo, enviando mensagem EOF para o cliente
+22:00:23 Info: Esperando pela resposta do cliente
+22:00:23 Info: Resposta recebida: OK
+22:00:23 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+22:00:23 Info: Resposta recebida do cliente : OK
+22:00:32 Info: Mensagem recebida do cliente 13
+22:00:32 Info: Mensagem recebida: refresh
+22:00:32 Info: Verificando mensagem recebida
+22:00:32 Info: Transferindo Arquivo Para o cliente
+22:00:32 Info: Recuperando o conteudo do arquivo
+22:00:32 Info: Enviando arquivo para o cliente
+22:00:32 Info: Enviando linha [21:55:02] Dado Inicial
+ para o client
+22:00:32 Info: Esperando pela resposta do cliente
+22:00:32 Info: Resposta recebida: OK
+22:00:32 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+22:00:32 Info: Resposta recebida do cliente : OK
+22:00:32 Info: Enviando linha [21:56:26] casa
+ para o client
+22:00:32 Info: Esperando pela resposta do cliente
+22:00:32 Info: Resposta recebida: OK
+22:00:32 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+22:00:32 Info: Resposta recebida do cliente : OK
+22:00:32 Info: Enviando linha [21:56:49] apartamento
+ para o client
+22:00:32 Info: Esperando pela resposta do cliente
+22:00:32 Info: Resposta recebida: OK
+22:00:32 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+22:00:32 Info: Resposta recebida do cliente : OK
+22:00:32 Info: Enviando linha [21:56:58] flat
+ para o client
+22:00:32 Info: Esperando pela resposta do cliente
+22:00:32 Info: Resposta recebida: OK
+22:00:32 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+22:00:32 Info: Resposta recebida do cliente : OK
+22:00:32 Info: Enviando linha [21:57:35] sobrado
+ para o client
+22:00:32 Info: Esperando pela resposta do cliente
+22:00:32 Info: Resposta recebida: OK
+22:00:32 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+22:00:32 Info: Resposta recebida do cliente : OK
+22:00:32 Info: Fim da transferencia do arquivo, enviando mensagem EOF para o cliente
+22:00:32 Info: Esperando pela resposta do cliente
+22:00:32 Info: Resposta recebida: OK
+22:00:32 Info: Verificando se a resposta OK esta de acordo com o padrao esperado
+22:00:32 Info: Resposta recebida do cliente : OK

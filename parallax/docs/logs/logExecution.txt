@@ -1,0 +1,31 @@
+A execução dos logs ocorreu da seguinte forma:
+	Primeiramente todos os servers foram inicializados
+	Após isso cada cliente se conectou neles, seguindo essa ordem
+	Cliente 1:
+			Server name: mint.
+			Port: 8000.
+			Server name: mint.
+			Port: 8500.
+			Server name: mint.
+			Port: 9000.
+	Cliente 2:
+			Server name: mint.
+			Port: 8500.
+			Server name: mint.
+			Port: 9000.
+			Server name: mint.
+			Port: 8000.
+	Cliente 3:
+			Server name: mint.
+			Port: 9000.
+			Server name: mint.
+			Port: 8000.
+			Server name: mint.
+			Port: 8500.
+	Após se conectarem com os servers cada cliente enviou uma requisição para alterar os dados, cada um esperando o outro terminar.
+	Após essa execução dois clientes tentaram alterar os dados ao mesmo tempo, fazendo com que apenas 1 pudesse se comunicar.
+	Após isso cada cliente pediu para ver o histórico de dados de um servidor diferente.
+		cliente 1: mint:8000
+		cliente 2: mint:8500
+		cliente 3: mint:9000
+	Após isso cada cliente pediu para sair do programa, terminando assim a execução do mesmo.

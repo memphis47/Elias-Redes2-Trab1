@@ -1,0 +1,57 @@
+<html>
+<head>
+    <link href="../css/rel.css" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8">
+    <title>Relatório - Redes 2 - Trabalho prático</title>
+</head>
+<body>
+<div id="tudo">
+    <table width="900px">
+        <tr>
+        <td>Nome:</td>
+        <td width="350px">Alan Peterson C. Silva</td>
+        <td width="200px">GRR20110556</td>
+        <td align="right">Criado em: 04/06/2015</td>
+    </tr>
+    <tr>
+    	<td></td>
+    	<td>Rafael R. de Carvalho</td>
+        <td>GRR20104490	</td>
+        <td align="right">Atualizado em: 05/06/2015</td>
+    </tr>
+    <tr>
+    	<td colspan="4" align="center"><strong>
+        <br>Redes II</strong></td>
+    </tr>
+
+    </table>
+
+
+    <h2>Relatório - Trabalho prático </h2>
+    <p>O primeiro passo foi decidir qual seria a linguagem de programação a ser usada, decidimos usar ruby, devido ao fato de ser uma linguagem em que ambos tem um domínio maior.</p>
+
+    <p>Fizemos algumas pesquisas para descobrirmos como fazer uma conexão cliente-servidor no ruby. Após acharmos a melhor forma, começamos a implementar uma conexão simples entre os dois, com algumas trocas de dados, sem seguir o protocolo 2PC, mandando uma mensagem simples para o servidor, e o servidor respondendo com um ACK.</p>
+
+    <p>Decidimos então fazer a comunicação 2PC entre um cliente e um servidor, usando as mensagens “change”, “abort”, “commit” e “data:dado” para comunicar com o servidor.</p>
+    <p>As mensagens são enviadas da seguinte forma:</p>
+    <ol>
+        <li>Cliente manda para o servidor a mensagem “change”, dizendo assim que quer alterar o dado atual do servidor.</li>
+        <li>O servidor responde com um OK ou NOK, dependendo se o mesmo estiver sendo usado por outro cliente.</li>
+        <li>Se a mensagem for OK, o cliente responde com a mensagem “commit”.</li>
+        <li>O servidor volta a responder o cliente com um OK ou NOK, caso algo de errado.</li>
+        <li>Se a mensagem for um OK, o cliente manda para o servidor a mensagem “data:dado” onde o dado é a novo dado que o servidor ira guardar.</li>
+        <li>O Servidor responde OK e termina assim a transmissão de dados do cliente.</li>
+        <li>Se algumas das mensagens for um NOK, o cliente manda a mensagem “abort” para o servidor.</li>
+    </ol>
+    <p>Feito isso, decidimos criar um menu, aonde o cliente pode escolher o dado que quer mandar ou se ele deseja sair.</p>
+    <p>Em seguida, colocamos para o servidor receber a porta dele via parâmetro na hora de executar, como no exemplo:</p>
+    <p class="code">$ ruby server.rb 8000</p>
+    <p>Onde 8000 é a porta do servidor.</p>
+    <p>Com a troca de informações entre cliente-servidor já funcionando, decidimos incrementar o que é comunicado, e para isso implementamos as seguintes funcionalidades:</p>
+    <ol>
+        <li>Salvar um arquivo com o dado atual e o histórico de dados salvos para cada servidor</li>
+        <li>Fazer com o cliente tenha sempre uma cópia atualizada desse arquivo de cada servidor que ele está conectado.</li>
+        <li>Adicionar ao menu inicial a possibilidade de visualizar o histórico de dados de um servidor.</li>
+    </ol>
+    <p>Ao concluir estas modificações, passamos a trabalhar no site de apresentação do trabalho e este relatório.</p>
+</div>

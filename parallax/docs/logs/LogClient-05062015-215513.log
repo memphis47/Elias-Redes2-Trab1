@@ -1,0 +1,633 @@
+21:55:13 Info: ----------------------------------------------------------------------------------------
+21:55:13 Info: Inicio da execucao do cliente que se comunica com 3 utilizando o protocolo 2PC
+21:55:13 Info: ----------------------------------------------------------------------------------------
+21:55:13 Info: Getting Names and Ports for servers
+21:55:13 Info: Solictando para o cliente o nome do servidor
+21:55:14 Info: Nome recebido: mint
+21:55:14 Info: Solictando para o cliente a porta do servidor mint
+21:55:18 Info: porta recebida: 8000
+21:55:18 Info: Connecting to server mint:8000
+21:55:18 Info: Connection with Server mint:8000 completed
+21:55:18 Info: Solictando para o cliente o nome do servidor
+21:55:19 Info: Nome recebido: mint
+21:55:19 Info: Solictando para o cliente a porta do servidor mint
+21:55:21 Info: porta recebida: 8500
+21:55:21 Info: Connecting to server mint:8500
+21:55:21 Info: Connection with Server mint:8500 completed
+21:55:21 Info: Solictando para o cliente o nome do servidor
+21:55:22 Info: Nome recebido: mint
+21:55:22 Info: Solictando para o cliente a porta do servidor mint
+21:55:24 Info: porta recebida: 9000
+21:55:24 Info: Connecting to server mint:9000
+21:55:24 Info: Connection with Server mint:9000 completed
+21:55:24 Info: Connection to servers sucessful
+21:55:24 Info: Recebendo dados atuais do servidor
+21:55:24 Info: Enviando refresh para o servidor mint
+21:55:24 Info: Esperando pela resposta do servidor mint
+21:55:24 Info: Mensagem recebida [21:55:02] Dado Inicial
+21:55:24 Info: Enviando OK para o servidor
+21:55:24 Info: OK enviado para o servidor
+21:55:24 Info: Mensagem recebida --+EOF+--
+21:55:24 Info: Enviando OK para o servidor
+21:55:24 Info: OK enviado para o servidor
+21:55:24 Info: Mensagem EOF Recebida
+21:55:24 Info: Verificando se o arquivo mint8000Data.txt existe
+21:55:24 Info: Arquivo mint8000Data.txt nao existe, criando arquivo data.txt
+21:55:24 Info: Arquivo mint8000Data.txt criado com sucesso
+21:55:24 Info: Escrevendo o dado [21:55:02] Dado Inicial no arquivo
+21:55:24 Info: Retornando dado atual: [21:55:02] Dado Inicial
+21:55:24 Info: Enviando refresh para o servidor mint
+21:55:24 Info: Esperando pela resposta do servidor mint
+21:55:24 Info: Mensagem recebida [21:55:05] Dado Inicial
+21:55:24 Info: Enviando OK para o servidor
+21:55:24 Info: OK enviado para o servidor
+21:55:24 Info: Mensagem recebida --+EOF+--
+21:55:24 Info: Enviando OK para o servidor
+21:55:24 Info: OK enviado para o servidor
+21:55:24 Info: Mensagem EOF Recebida
+21:55:24 Info: Verificando se o arquivo mint8500Data.txt existe
+21:55:24 Info: Arquivo mint8500Data.txt nao existe, criando arquivo data.txt
+21:55:24 Info: Arquivo mint8500Data.txt criado com sucesso
+21:55:24 Info: Escrevendo o dado [21:55:05] Dado Inicial no arquivo
+21:55:24 Info: Retornando dado atual: [21:55:05] Dado Inicial
+21:55:24 Info: Enviando refresh para o servidor mint
+21:55:24 Info: Esperando pela resposta do servidor mint
+21:55:24 Info: Mensagem recebida [21:55:10] Dado Inicial
+21:55:24 Info: Enviando OK para o servidor
+21:55:24 Info: OK enviado para o servidor
+21:55:24 Info: Mensagem recebida --+EOF+--
+21:55:24 Info: Enviando OK para o servidor
+21:55:24 Info: OK enviado para o servidor
+21:55:24 Info: Mensagem EOF Recebida
+21:55:24 Info: Verificando se o arquivo mint9000Data.txt existe
+21:55:24 Info: Arquivo mint9000Data.txt nao existe, criando arquivo data.txt
+21:55:24 Info: Arquivo mint9000Data.txt criado com sucesso
+21:55:24 Info: Escrevendo o dado [21:55:10] Dado Inicial no arquivo
+21:55:24 Info: Retornando dado atual: [21:55:10] Dado Inicial
+21:55:24 Info: Recebendo dados atuais do servidor
+21:55:24 Info: Enviando refresh para o servidor mint
+21:55:24 Info: Esperando pela resposta do servidor mint
+21:55:25 Info: Mensagem recebida [21:55:02] Dado Inicial
+21:55:25 Info: Enviando OK para o servidor
+21:55:25 Info: OK enviado para o servidor
+21:55:25 Info: Mensagem recebida --+EOF+--
+21:55:25 Info: Enviando OK para o servidor
+21:55:25 Info: OK enviado para o servidor
+21:55:25 Info: Mensagem EOF Recebida
+21:55:25 Info: Verificando se o arquivo mint8000Data.txt existe
+21:55:25 Info: Escrevendo o dado [21:55:02] Dado Inicial no arquivo
+21:55:25 Info: Retornando dado atual: [21:55:02] Dado Inicial
+21:55:25 Info: Enviando refresh para o servidor mint
+21:55:25 Info: Esperando pela resposta do servidor mint
+21:55:25 Info: Mensagem recebida [21:55:05] Dado Inicial
+21:55:25 Info: Enviando OK para o servidor
+21:55:25 Info: OK enviado para o servidor
+21:55:25 Info: Mensagem recebida --+EOF+--
+21:55:25 Info: Enviando OK para o servidor
+21:55:25 Info: OK enviado para o servidor
+21:55:25 Info: Mensagem EOF Recebida
+21:55:25 Info: Verificando se o arquivo mint8500Data.txt existe
+21:55:25 Info: Escrevendo o dado [21:55:05] Dado Inicial no arquivo
+21:55:25 Info: Retornando dado atual: [21:55:05] Dado Inicial
+21:55:25 Info: Enviando refresh para o servidor mint
+21:55:25 Info: Esperando pela resposta do servidor mint
+21:55:25 Info: Mensagem recebida [21:55:10] Dado Inicial
+21:55:25 Info: Enviando OK para o servidor
+21:55:25 Info: OK enviado para o servidor
+21:55:25 Info: Mensagem recebida --+EOF+--
+21:55:25 Info: Enviando OK para o servidor
+21:55:25 Info: OK enviado para o servidor
+21:55:25 Info: Mensagem EOF Recebida
+21:55:25 Info: Verificando se o arquivo mint9000Data.txt existe
+21:55:25 Info: Escrevendo o dado [21:55:10] Dado Inicial no arquivo
+21:55:25 Info: Retornando dado atual: [21:55:10] Dado Inicial
+21:55:25 Info: Escrevendo os dados Atuais
+21:55:25 Info: Dado atual do servidor mint:8000 => [21:55:02] Dado Inicial
+21:55:25 Info: Dado atual do servidor mint:8500 => [21:55:05] Dado Inicial
+21:55:25 Info: Dado atual do servidor mint:9000 => [21:55:10] Dado Inicial
+21:55:25 Info: Esperando cliente informar opcao desejada
+21:56:19 Info: O cliente escolheu a opcao 1
+21:56:19 Info: Abrindo conexao com o servidor mint
+21:56:19 Info: Conexao aberta com sucesso
+21:56:19 Info: Abrindo conexao com o servidor mint
+21:56:19 Info: Conexao aberta com sucesso
+21:56:19 Info: Abrindo conexao com o servidor mint
+21:56:19 Info: Conexao aberta com sucesso
+21:56:23 Info: Recebendo dados atuais do servidor
+21:56:23 Info: Enviando refresh para o servidor mint
+21:56:23 Info: Esperando pela resposta do servidor mint
+21:56:23 Info: Mensagem recebida [21:55:02] Dado Inicial
+21:56:23 Info: Enviando OK para o servidor
+21:56:23 Info: OK enviado para o servidor
+21:56:23 Info: Mensagem recebida --+EOF+--
+21:56:23 Info: Enviando OK para o servidor
+21:56:23 Info: OK enviado para o servidor
+21:56:23 Info: Mensagem EOF Recebida
+21:56:23 Info: Verificando se o arquivo mint8000Data.txt existe
+21:56:23 Info: Escrevendo o dado [21:55:02] Dado Inicial no arquivo
+21:56:23 Info: Retornando dado atual: [21:55:02] Dado Inicial
+21:56:23 Info: Enviando refresh para o servidor mint
+21:56:23 Info: Esperando pela resposta do servidor mint
+21:56:23 Info: Mensagem recebida [21:55:05] Dado Inicial
+21:56:23 Info: Enviando OK para o servidor
+21:56:23 Info: OK enviado para o servidor
+21:56:23 Info: Mensagem recebida --+EOF+--
+21:56:23 Info: Enviando OK para o servidor
+21:56:23 Info: OK enviado para o servidor
+21:56:23 Info: Mensagem EOF Recebida
+21:56:23 Info: Verificando se o arquivo mint8500Data.txt existe
+21:56:23 Info: Escrevendo o dado [21:55:05] Dado Inicial no arquivo
+21:56:23 Info: Retornando dado atual: [21:55:05] Dado Inicial
+21:56:23 Info: Enviando refresh para o servidor mint
+21:56:23 Info: Esperando pela resposta do servidor mint
+21:56:23 Info: Mensagem recebida [21:55:10] Dado Inicial
+21:56:23 Info: Enviando OK para o servidor
+21:56:23 Info: OK enviado para o servidor
+21:56:23 Info: Mensagem recebida --+EOF+--
+21:56:23 Info: Enviando OK para o servidor
+21:56:23 Info: OK enviado para o servidor
+21:56:23 Info: Mensagem EOF Recebida
+21:56:23 Info: Verificando se o arquivo mint9000Data.txt existe
+21:56:23 Info: Escrevendo o dado [21:55:10] Dado Inicial no arquivo
+21:56:23 Info: Retornando dado atual: [21:55:10] Dado Inicial
+21:56:23 Info: Send message "Change" to servers
+21:56:23 Info: Enviando mensagem para o servidor mint
+21:56:23 Info: Mensagem sendo enviada: change
+21:56:23 Info: Enviando mensagem para o servidor mint
+21:56:23 Info: Mensagem sendo enviada: change
+21:56:23 Info: Enviando mensagem para o servidor mint
+21:56:23 Info: Mensagem sendo enviada: change
+21:56:23 Info: Esperando pela resposta do servidor 0
+21:56:24 Info: Resposta recebida do servidor 0: OK
+21:56:24 Info: Esperando pela resposta do servidor 1
+21:56:24 Info: Resposta recebida do servidor 1: OK
+21:56:24 Info: Esperando pela resposta do servidor 2
+21:56:24 Info: Resposta recebida do servidor 2: OK
+21:56:24 Info: Checking if servers reply to change is OK
+21:56:24 Info: Checking reply from server 0
+21:56:24 Info: Reply from server 0= OK
+21:56:24 Info: Checking reply from server 1
+21:56:24 Info: Reply from server 1= OK
+21:56:24 Info: Checking reply from server 2
+21:56:24 Info: Reply from server 2= OK
+21:56:24 Info: Respostas recebidas dos servidores estao de acordo com o esperado
+21:56:24 Info: Send message "commit" to servers
+21:56:24 Info: Enviando mensagem para o servidor mint
+21:56:24 Info: Mensagem sendo enviada: commit
+21:56:24 Info: Enviando mensagem para o servidor mint
+21:56:24 Info: Mensagem sendo enviada: commit
+21:56:24 Info: Enviando mensagem para o servidor mint
+21:56:24 Info: Mensagem sendo enviada: commit
+21:56:24 Info: Esperando pela resposta do servidor 0
+21:56:25 Info: Resposta recebida do servidor 0: OK
+21:56:25 Info: Esperando pela resposta do servidor 1
+21:56:25 Info: Resposta recebida do servidor 1: OK
+21:56:25 Info: Esperando pela resposta do servidor 2
+21:56:25 Info: Resposta recebida do servidor 2: OK
+21:56:25 Info: Checking if servers reply to commit is OK
+21:56:25 Info: Checking reply from server 0
+21:56:25 Info: Reply from server 0= OK
+21:56:25 Info: Checking reply from server 1
+21:56:25 Info: Reply from server 1= OK
+21:56:25 Info: Checking reply from server 2
+21:56:25 Info: Reply from server 2= OK
+21:56:25 Info: Respostas recebidas dos servidores estao de acordo com o esperado
+21:56:25 Info: Sending Data casa to servers
+21:56:25 Info: Enviando mensagem para o servidor mint
+21:56:25 Info: Mensagem sendo enviada: data:casa
+21:56:25 Info: Enviando mensagem para o servidor mint
+21:56:25 Info: Mensagem sendo enviada: data:casa
+21:56:25 Info: Enviando mensagem para o servidor mint
+21:56:25 Info: Mensagem sendo enviada: data:casa
+21:56:25 Info: Esperando pela resposta do servidor 0
+21:56:26 Info: Resposta recebida do servidor 0: OK
+21:56:26 Info: Esperando pela resposta do servidor 1
+21:56:26 Info: Resposta recebida do servidor 1: OK
+21:56:26 Info: Esperando pela resposta do servidor 2
+21:56:26 Info: Resposta recebida do servidor 2: OK
+21:56:26 Info: Checking if servers reply to data send is ACK
+21:56:26 Info: Checking reply from server 0
+21:56:26 Info: Reply from server 0= OK
+21:56:26 Info: Checking reply from server 1
+21:56:26 Info: Reply from server 1= OK
+21:56:26 Info: Checking reply from server 2
+21:56:26 Info: Reply from server 2= OK
+21:56:26 Info: Respostas recebidas dos servidores estao de acordo com o esperado
+21:56:26 Info: Abrindo conexao com o servidor mint
+21:56:26 Info: Conexao aberta com sucesso
+21:56:26 Info: Abrindo conexao com o servidor mint
+21:56:26 Info: Conexao aberta com sucesso
+21:56:26 Info: Abrindo conexao com o servidor mint
+21:56:26 Info: Conexao aberta com sucesso
+21:56:26 Info: Recebendo dados atuais do servidor
+21:56:26 Info: Enviando refresh para o servidor mint
+21:56:26 Info: Esperando pela resposta do servidor mint
+21:56:26 Info: Mensagem recebida [21:55:02] Dado Inicial
+21:56:26 Info: Enviando OK para o servidor
+21:56:26 Info: OK enviado para o servidor
+21:56:26 Info: Mensagem recebida [21:56:26] casa
+21:56:26 Info: Enviando OK para o servidor
+21:56:26 Info: OK enviado para o servidor
+21:56:26 Info: Mensagem recebida --+EOF+--
+21:56:26 Info: Enviando OK para o servidor
+21:56:26 Info: OK enviado para o servidor
+21:56:26 Info: Mensagem EOF Recebida
+21:56:26 Info: Verificando se o arquivo mint8000Data.txt existe
+21:56:26 Info: Escrevendo o dado [21:55:02] Dado Inicial no arquivo
+21:56:26 Info: Escrevendo o dado [21:56:26] casa no arquivo
+21:56:26 Info: Retornando dado atual: [21:56:26] casa
+21:56:26 Info: Enviando refresh para o servidor mint
+21:56:26 Info: Esperando pela resposta do servidor mint
+21:56:26 Info: Mensagem recebida [21:55:05] Dado Inicial
+21:56:26 Info: Enviando OK para o servidor
+21:56:26 Info: OK enviado para o servidor
+21:56:26 Info: Mensagem recebida [21:56:26] casa
+21:56:26 Info: Enviando OK para o servidor
+21:56:26 Info: OK enviado para o servidor
+21:56:26 Info: Mensagem recebida --+EOF+--
+21:56:26 Info: Enviando OK para o servidor
+21:56:26 Info: OK enviado para o servidor
+21:56:26 Info: Mensagem EOF Recebida
+21:56:26 Info: Verificando se o arquivo mint8500Data.txt existe
+21:56:26 Info: Escrevendo o dado [21:55:05] Dado Inicial no arquivo
+21:56:26 Info: Escrevendo o dado [21:56:26] casa no arquivo
+21:56:26 Info: Retornando dado atual: [21:56:26] casa
+21:56:26 Info: Enviando refresh para o servidor mint
+21:56:26 Info: Esperando pela resposta do servidor mint
+21:56:26 Info: Mensagem recebida [21:55:10] Dado Inicial
+21:56:26 Info: Enviando OK para o servidor
+21:56:26 Info: OK enviado para o servidor
+21:56:26 Info: Mensagem recebida [21:56:26] casa
+21:56:26 Info: Enviando OK para o servidor
+21:56:26 Info: OK enviado para o servidor
+21:56:26 Info: Mensagem recebida --+EOF+--
+21:56:26 Info: Enviando OK para o servidor
+21:56:26 Info: OK enviado para o servidor
+21:56:26 Info: Mensagem EOF Recebida
+21:56:26 Info: Verificando se o arquivo mint9000Data.txt existe
+21:56:26 Info: Escrevendo o dado [21:55:10] Dado Inicial no arquivo
+21:56:26 Info: Escrevendo o dado [21:56:26] casa no arquivo
+21:56:26 Info: Retornando dado atual: [21:56:26] casa
+21:56:26 Info: Escrevendo os dados Atuais
+21:56:26 Info: Dado atual do servidor mint:8000 => [21:56:26] casa
+21:56:26 Info: Dado atual do servidor mint:8500 => [21:56:26] casa
+21:56:26 Info: Dado atual do servidor mint:9000 => [21:56:26] casa
+21:56:26 Info: Esperando cliente informar opcao desejada
+21:57:12 Info: O cliente escolheu a opcao 1
+21:57:12 Info: Abrindo conexao com o servidor mint
+21:57:12 Info: Conexao aberta com sucesso
+21:57:12 Info: Abrindo conexao com o servidor mint
+21:57:12 Info: Conexao aberta com sucesso
+21:57:12 Info: Abrindo conexao com o servidor mint
+21:57:12 Info: Conexao aberta com sucesso
+21:57:32 Info: Recebendo dados atuais do servidor
+21:57:32 Info: Enviando refresh para o servidor mint
+21:57:32 Info: Esperando pela resposta do servidor mint
+21:57:32 Info: Mensagem recebida [21:55:02] Dado Inicial
+21:57:32 Info: Enviando OK para o servidor
+21:57:32 Info: OK enviado para o servidor
+21:57:32 Info: Mensagem recebida [21:56:26] casa
+21:57:32 Info: Enviando OK para o servidor
+21:57:32 Info: OK enviado para o servidor
+21:57:32 Info: Mensagem recebida [21:56:49] apartamento
+21:57:32 Info: Enviando OK para o servidor
+21:57:32 Info: OK enviado para o servidor
+21:57:32 Info: Mensagem recebida [21:56:58] flat
+21:57:32 Info: Enviando OK para o servidor
+21:57:32 Info: OK enviado para o servidor
+21:57:32 Info: Mensagem recebida --+EOF+--
+21:57:32 Info: Enviando OK para o servidor
+21:57:32 Info: OK enviado para o servidor
+21:57:32 Info: Mensagem EOF Recebida
+21:57:32 Info: Verificando se o arquivo mint8000Data.txt existe
+21:57:32 Info: Escrevendo o dado [21:55:02] Dado Inicial no arquivo
+21:57:32 Info: Escrevendo o dado [21:56:26] casa no arquivo
+21:57:32 Info: Escrevendo o dado [21:56:49] apartamento no arquivo
+21:57:32 Info: Escrevendo o dado [21:56:58] flat no arquivo
+21:57:32 Info: Retornando dado atual: [21:56:58] flat
+21:57:32 Info: Enviando refresh para o servidor mint
+21:57:32 Info: Esperando pela resposta do servidor mint
+21:57:32 Info: Mensagem recebida [21:55:05] Dado Inicial
+21:57:32 Info: Enviando OK para o servidor
+21:57:32 Info: OK enviado para o servidor
+21:57:32 Info: Mensagem recebida [21:56:26] casa
+21:57:32 Info: Enviando OK para o servidor
+21:57:32 Info: OK enviado para o servidor
+21:57:32 Info: Mensagem recebida [21:56:49] apartamento
+21:57:32 Info: Enviando OK para o servidor
+21:57:32 Info: OK enviado para o servidor
+21:57:32 Info: Mensagem recebida [21:56:58] flat
+21:57:32 Info: Enviando OK para o servidor
+21:57:32 Info: OK enviado para o servidor
+21:57:32 Info: Mensagem recebida --+EOF+--
+21:57:32 Info: Enviando OK para o servidor
+21:57:32 Info: OK enviado para o servidor
+21:57:32 Info: Mensagem EOF Recebida
+21:57:32 Info: Verificando se o arquivo mint8500Data.txt existe
+21:57:32 Info: Escrevendo o dado [21:55:05] Dado Inicial no arquivo
+21:57:32 Info: Escrevendo o dado [21:56:26] casa no arquivo
+21:57:32 Info: Escrevendo o dado [21:56:49] apartamento no arquivo
+21:57:32 Info: Escrevendo o dado [21:56:58] flat no arquivo
+21:57:32 Info: Retornando dado atual: [21:56:58] flat
+21:57:32 Info: Enviando refresh para o servidor mint
+21:57:32 Info: Esperando pela resposta do servidor mint
+21:57:32 Info: Mensagem recebida [21:55:10] Dado Inicial
+21:57:32 Info: Enviando OK para o servidor
+21:57:32 Info: OK enviado para o servidor
+21:57:32 Info: Mensagem recebida [21:56:26] casa
+21:57:32 Info: Enviando OK para o servidor
+21:57:32 Info: OK enviado para o servidor
+21:57:32 Info: Mensagem recebida [21:56:49] apartamento
+21:57:32 Info: Enviando OK para o servidor
+21:57:32 Info: OK enviado para o servidor
+21:57:32 Info: Mensagem recebida [21:56:58] flat
+21:57:32 Info: Enviando OK para o servidor
+21:57:32 Info: OK enviado para o servidor
+21:57:32 Info: Mensagem recebida --+EOF+--
+21:57:32 Info: Enviando OK para o servidor
+21:57:32 Info: OK enviado para o servidor
+21:57:32 Info: Mensagem EOF Recebida
+21:57:32 Info: Verificando se o arquivo mint9000Data.txt existe
+21:57:32 Info: Escrevendo o dado [21:55:10] Dado Inicial no arquivo
+21:57:32 Info: Escrevendo o dado [21:56:26] casa no arquivo
+21:57:32 Info: Escrevendo o dado [21:56:49] apartamento no arquivo
+21:57:32 Info: Escrevendo o dado [21:56:58] flat no arquivo
+21:57:32 Info: Retornando dado atual: [21:56:58] flat
+21:57:32 Info: Send message "Change" to servers
+21:57:32 Info: Enviando mensagem para o servidor mint
+21:57:32 Info: Mensagem sendo enviada: change
+21:57:32 Info: Enviando mensagem para o servidor mint
+21:57:32 Info: Mensagem sendo enviada: change
+21:57:32 Info: Enviando mensagem para o servidor mint
+21:57:32 Info: Mensagem sendo enviada: change
+21:57:32 Info: Esperando pela resposta do servidor 0
+21:57:33 Info: Resposta recebida do servidor 0: OK
+21:57:33 Info: Esperando pela resposta do servidor 1
+21:57:33 Info: Resposta recebida do servidor 1: OK
+21:57:33 Info: Esperando pela resposta do servidor 2
+21:57:33 Info: Resposta recebida do servidor 2: OK
+21:57:33 Info: Checking if servers reply to change is OK
+21:57:33 Info: Checking reply from server 0
+21:57:33 Info: Reply from server 0= OK
+21:57:33 Info: Checking reply from server 1
+21:57:33 Info: Reply from server 1= OK
+21:57:33 Info: Checking reply from server 2
+21:57:33 Info: Reply from server 2= OK
+21:57:33 Info: Respostas recebidas dos servidores estao de acordo com o esperado
+21:57:33 Info: Send message "commit" to servers
+21:57:33 Info: Enviando mensagem para o servidor mint
+21:57:33 Info: Mensagem sendo enviada: commit
+21:57:33 Info: Enviando mensagem para o servidor mint
+21:57:33 Info: Mensagem sendo enviada: commit
+21:57:33 Info: Enviando mensagem para o servidor mint
+21:57:33 Info: Mensagem sendo enviada: commit
+21:57:33 Info: Esperando pela resposta do servidor 0
+21:57:34 Info: Resposta recebida do servidor 0: OK
+21:57:34 Info: Esperando pela resposta do servidor 1
+21:57:34 Info: Resposta recebida do servidor 1: OK
+21:57:34 Info: Esperando pela resposta do servidor 2
+21:57:34 Info: Resposta recebida do servidor 2: OK
+21:57:34 Info: Checking if servers reply to commit is OK
+21:57:34 Info: Checking reply from server 0
+21:57:34 Info: Reply from server 0= OK
+21:57:34 Info: Checking reply from server 1
+21:57:34 Info: Reply from server 1= OK
+21:57:34 Info: Checking reply from server 2
+21:57:34 Info: Reply from server 2= OK
+21:57:34 Info: Respostas recebidas dos servidores estao de acordo com o esperado
+21:57:34 Info: Sending Data sobrado to servers
+21:57:34 Info: Enviando mensagem para o servidor mint
+21:57:34 Info: Mensagem sendo enviada: data:sobrado
+21:57:34 Info: Enviando mensagem para o servidor mint
+21:57:34 Info: Mensagem sendo enviada: data:sobrado
+21:57:34 Info: Enviando mensagem para o servidor mint
+21:57:34 Info: Mensagem sendo enviada: data:sobrado
+21:57:34 Info: Esperando pela resposta do servidor 0
+21:57:35 Info: Resposta recebida do servidor 0: OK
+21:57:35 Info: Esperando pela resposta do servidor 1
+21:57:35 Info: Resposta recebida do servidor 1: OK
+21:57:35 Info: Esperando pela resposta do servidor 2
+21:57:35 Info: Resposta recebida do servidor 2: OK
+21:57:35 Info: Checking if servers reply to data send is ACK
+21:57:35 Info: Checking reply from server 0
+21:57:35 Info: Reply from server 0= OK
+21:57:35 Info: Checking reply from server 1
+21:57:35 Info: Reply from server 1= OK
+21:57:35 Info: Checking reply from server 2
+21:57:35 Info: Reply from server 2= OK
+21:57:35 Info: Respostas recebidas dos servidores estao de acordo com o esperado
+21:57:35 Info: Abrindo conexao com o servidor mint
+21:57:35 Info: Conexao aberta com sucesso
+21:57:35 Info: Abrindo conexao com o servidor mint
+21:57:35 Info: Conexao aberta com sucesso
+21:57:35 Info: Abrindo conexao com o servidor mint
+21:57:35 Info: Conexao aberta com sucesso
+21:57:35 Info: Recebendo dados atuais do servidor
+21:57:35 Info: Enviando refresh para o servidor mint
+21:57:35 Info: Esperando pela resposta do servidor mint
+21:57:35 Info: Mensagem recebida [21:55:02] Dado Inicial
+21:57:35 Info: Enviando OK para o servidor
+21:57:35 Info: OK enviado para o servidor
+21:57:35 Info: Mensagem recebida [21:56:26] casa
+21:57:35 Info: Enviando OK para o servidor
+21:57:35 Info: OK enviado para o servidor
+21:57:35 Info: Mensagem recebida [21:56:49] apartamento
+21:57:35 Info: Enviando OK para o servidor
+21:57:35 Info: OK enviado para o servidor
+21:57:35 Info: Mensagem recebida [21:56:58] flat
+21:57:35 Info: Enviando OK para o servidor
+21:57:35 Info: OK enviado para o servidor
+21:57:35 Info: Mensagem recebida [21:57:35] sobrado
+21:57:35 Info: Enviando OK para o servidor
+21:57:35 Info: OK enviado para o servidor
+21:57:35 Info: Mensagem recebida --+EOF+--
+21:57:35 Info: Enviando OK para o servidor
+21:57:35 Info: OK enviado para o servidor
+21:57:35 Info: Mensagem EOF Recebida
+21:57:35 Info: Verificando se o arquivo mint8000Data.txt existe
+21:57:35 Info: Escrevendo o dado [21:55:02] Dado Inicial no arquivo
+21:57:35 Info: Escrevendo o dado [21:56:26] casa no arquivo
+21:57:35 Info: Escrevendo o dado [21:56:49] apartamento no arquivo
+21:57:35 Info: Escrevendo o dado [21:56:58] flat no arquivo
+21:57:35 Info: Escrevendo o dado [21:57:35] sobrado no arquivo
+21:57:35 Info: Retornando dado atual: [21:57:35] sobrado
+21:57:35 Info: Enviando refresh para o servidor mint
+21:57:35 Info: Esperando pela resposta do servidor mint
+21:57:35 Info: Mensagem recebida [21:55:05] Dado Inicial
+21:57:35 Info: Enviando OK para o servidor
+21:57:35 Info: OK enviado para o servidor
+21:57:35 Info: Mensagem recebida [21:56:26] casa
+21:57:35 Info: Enviando OK para o servidor
+21:57:35 Info: OK enviado para o servidor
+21:57:35 Info: Mensagem recebida [21:56:49] apartamento
+21:57:35 Info: Enviando OK para o servidor
+21:57:35 Info: OK enviado para o servidor
+21:57:35 Info: Mensagem recebida [21:56:58] flat
+21:57:35 Info: Enviando OK para o servidor
+21:57:35 Info: OK enviado para o servidor
+21:57:35 Info: Mensagem recebida [21:57:35] sobrado
+21:57:35 Info: Enviando OK para o servidor
+21:57:35 Info: OK enviado para o servidor
+21:57:35 Info: Mensagem recebida --+EOF+--
+21:57:35 Info: Enviando OK para o servidor
+21:57:35 Info: OK enviado para o servidor
+21:57:35 Info: Mensagem EOF Recebida
+21:57:35 Info: Verificando se o arquivo mint8500Data.txt existe
+21:57:35 Info: Escrevendo o dado [21:55:05] Dado Inicial no arquivo
+21:57:35 Info: Escrevendo o dado [21:56:26] casa no arquivo
+21:57:35 Info: Escrevendo o dado [21:56:49] apartamento no arquivo
+21:57:35 Info: Escrevendo o dado [21:56:58] flat no arquivo
+21:57:35 Info: Escrevendo o dado [21:57:35] sobrado no arquivo
+21:57:35 Info: Retornando dado atual: [21:57:35] sobrado
+21:57:35 Info: Enviando refresh para o servidor mint
+21:57:35 Info: Esperando pela resposta do servidor mint
+21:57:35 Info: Mensagem recebida [21:55:10] Dado Inicial
+21:57:35 Info: Enviando OK para o servidor
+21:57:35 Info: OK enviado para o servidor
+21:57:35 Info: Mensagem recebida [21:56:26] casa
+21:57:35 Info: Enviando OK para o servidor
+21:57:35 Info: OK enviado para o servidor
+21:57:35 Info: Mensagem recebida [21:56:49] apartamento
+21:57:35 Info: Enviando OK para o servidor
+21:57:35 Info: OK enviado para o servidor
+21:57:35 Info: Mensagem recebida [21:56:58] flat
+21:57:35 Info: Enviando OK para o servidor
+21:57:35 Info: OK enviado para o servidor
+21:57:35 Info: Mensagem recebida [21:57:35] sobrado
+21:57:35 Info: Enviando OK para o servidor
+21:57:35 Info: OK enviado para o servidor
+21:57:35 Info: Mensagem recebida --+EOF+--
+21:57:35 Info: Enviando OK para o servidor
+21:57:35 Info: OK enviado para o servidor
+21:57:35 Info: Mensagem EOF Recebida
+21:57:35 Info: Verificando se o arquivo mint9000Data.txt existe
+21:57:35 Info: Escrevendo o dado [21:55:10] Dado Inicial no arquivo
+21:57:35 Info: Escrevendo o dado [21:56:26] casa no arquivo
+21:57:35 Info: Escrevendo o dado [21:56:49] apartamento no arquivo
+21:57:35 Info: Escrevendo o dado [21:56:58] flat no arquivo
+21:57:35 Info: Escrevendo o dado [21:57:35] sobrado no arquivo
+21:57:35 Info: Retornando dado atual: [21:57:35] sobrado
+21:57:35 Info: Escrevendo os dados Atuais
+21:57:35 Info: Dado atual do servidor mint:8000 => [21:57:35] sobrado
+21:57:35 Info: Dado atual do servidor mint:8500 => [21:57:35] sobrado
+21:57:35 Info: Dado atual do servidor mint:9000 => [21:57:35] sobrado
+21:57:35 Info: Esperando cliente informar opcao desejada
+22:00:27 Info: O cliente escolheu a opcao 2
+22:00:27 Info: Esperando cliente informar opcao desejada
+22:00:27 Info: Servidores disponiveis => mint:8000
+22:00:27 Info: Servidores disponiveis => mint:8500
+22:00:27 Info: Servidores disponiveis => mint:9000
+22:00:30 Info: Opcao digitada pelo cliente: 1
+22:00:30 Info: O cliente escolheu a opcao 1
+22:00:30 Info: Recuperando o conteudo do arquivo
+22:00:30 Info: Escrevendo dados na tela
+22:00:30 Info: Escrevendo dado [21:55:02] Dado Inicial
+ para o cliente
+22:00:30 Info: Escrevendo dado [21:56:26] casa
+ para o cliente
+22:00:30 Info: Escrevendo dado [21:56:49] apartamento
+ para o cliente
+22:00:30 Info: Escrevendo dado [21:56:58] flat
+ para o cliente
+22:00:30 Info: Escrevendo dado [21:57:35] sobrado
+ para o cliente
+22:00:30 Info: Esperando o cliente pressionar a tecla enter ...
+22:00:32 Info: Esperando cliente informar opcao desejada
+22:00:32 Info: Servidores disponiveis => mint:8000
+22:00:32 Info: Servidores disponiveis => mint:8500
+22:00:32 Info: Servidores disponiveis => mint:9000
+22:00:32 Info: Opcao digitada pelo cliente: 0
+22:00:32 Info: O cliente escolheu a opcao 0
+22:00:32 Info: Voltando ao menu inicial
+22:00:32 Info: Recebendo dados atuais do servidor
+22:00:32 Info: Enviando refresh para o servidor mint
+22:00:32 Info: Esperando pela resposta do servidor mint
+22:00:32 Info: Mensagem recebida [21:55:02] Dado Inicial
+22:00:32 Info: Enviando OK para o servidor
+22:00:32 Info: OK enviado para o servidor
+22:00:32 Info: Mensagem recebida [21:56:26] casa
+22:00:32 Info: Enviando OK para o servidor
+22:00:32 Info: OK enviado para o servidor
+22:00:32 Info: Mensagem recebida [21:56:49] apartamento
+22:00:32 Info: Enviando OK para o servidor
+22:00:32 Info: OK enviado para o servidor
+22:00:32 Info: Mensagem recebida [21:56:58] flat
+22:00:32 Info: Enviando OK para o servidor
+22:00:32 Info: OK enviado para o servidor
+22:00:32 Info: Mensagem recebida [21:57:35] sobrado
+22:00:32 Info: Enviando OK para o servidor
+22:00:32 Info: OK enviado para o servidor
+22:00:32 Info: Mensagem recebida --+EOF+--
+22:00:32 Info: Enviando OK para o servidor
+22:00:32 Info: OK enviado para o servidor
+22:00:32 Info: Mensagem EOF Recebida
+22:00:32 Info: Verificando se o arquivo mint8000Data.txt existe
+22:00:32 Info: Escrevendo o dado [21:55:02] Dado Inicial no arquivo
+22:00:32 Info: Escrevendo o dado [21:56:26] casa no arquivo
+22:00:32 Info: Escrevendo o dado [21:56:49] apartamento no arquivo
+22:00:32 Info: Escrevendo o dado [21:56:58] flat no arquivo
+22:00:32 Info: Escrevendo o dado [21:57:35] sobrado no arquivo
+22:00:32 Info: Retornando dado atual: [21:57:35] sobrado
+22:00:32 Info: Enviando refresh para o servidor mint
+22:00:32 Info: Esperando pela resposta do servidor mint
+22:00:32 Info: Mensagem recebida [21:55:05] Dado Inicial
+22:00:32 Info: Enviando OK para o servidor
+22:00:32 Info: OK enviado para o servidor
+22:00:32 Info: Mensagem recebida [21:56:26] casa
+22:00:32 Info: Enviando OK para o servidor
+22:00:32 Info: OK enviado para o servidor
+22:00:32 Info: Mensagem recebida [21:56:49] apartamento
+22:00:32 Info: Enviando OK para o servidor
+22:00:32 Info: OK enviado para o servidor
+22:00:32 Info: Mensagem recebida [21:56:58] flat
+22:00:32 Info: Enviando OK para o servidor
+22:00:32 Info: OK enviado para o servidor
+22:00:32 Info: Mensagem recebida [21:57:35] sobrado
+22:00:32 Info: Enviando OK para o servidor
+22:00:32 Info: OK enviado para o servidor
+22:00:32 Info: Mensagem recebida --+EOF+--
+22:00:32 Info: Enviando OK para o servidor
+22:00:32 Info: OK enviado para o servidor
+22:00:32 Info: Mensagem EOF Recebida
+22:00:32 Info: Verificando se o arquivo mint8500Data.txt existe
+22:00:32 Info: Escrevendo o dado [21:55:05] Dado Inicial no arquivo
+22:00:32 Info: Escrevendo o dado [21:56:26] casa no arquivo
+22:00:32 Info: Escrevendo o dado [21:56:49] apartamento no arquivo
+22:00:32 Info: Escrevendo o dado [21:56:58] flat no arquivo
+22:00:32 Info: Escrevendo o dado [21:57:35] sobrado no arquivo
+22:00:32 Info: Retornando dado atual: [21:57:35] sobrado
+22:00:32 Info: Enviando refresh para o servidor mint
+22:00:32 Info: Esperando pela resposta do servidor mint
+22:00:32 Info: Mensagem recebida [21:55:10] Dado Inicial
+22:00:32 Info: Enviando OK para o servidor
+22:00:32 Info: OK enviado para o servidor
+22:00:32 Info: Mensagem recebida [21:56:26] casa
+22:00:32 Info: Enviando OK para o servidor
+22:00:32 Info: OK enviado para o servidor
+22:00:32 Info: Mensagem recebida [21:56:49] apartamento
+22:00:32 Info: Enviando OK para o servidor
+22:00:32 Info: OK enviado para o servidor
+22:00:32 Info: Mensagem recebida [21:56:58] flat
+22:00:32 Info: Enviando OK para o servidor
+22:00:32 Info: OK enviado para o servidor
+22:00:32 Info: Mensagem recebida [21:57:35] sobrado
+22:00:32 Info: Enviando OK para o servidor
+22:00:32 Info: OK enviado para o servidor
+22:00:32 Info: Mensagem recebida --+EOF+--
+22:00:32 Info: Enviando OK para o servidor
+22:00:32 Info: OK enviado para o servidor
+22:00:32 Info: Mensagem EOF Recebida
+22:00:32 Info: Verificando se o arquivo mint9000Data.txt existe
+22:00:32 Info: Escrevendo o dado [21:55:10] Dado Inicial no arquivo
+22:00:32 Info: Escrevendo o dado [21:56:26] casa no arquivo
+22:00:32 Info: Escrevendo o dado [21:56:49] apartamento no arquivo
+22:00:32 Info: Escrevendo o dado [21:56:58] flat no arquivo
+22:00:32 Info: Escrevendo o dado [21:57:35] sobrado no arquivo
+22:00:32 Info: Retornando dado atual: [21:57:35] sobrado
+22:00:32 Info: Escrevendo os dados Atuais
+22:00:32 Info: Dado atual do servidor mint:8000 => [21:57:35] sobrado
+22:00:32 Info: Dado atual do servidor mint:8500 => [21:57:35] sobrado
+22:00:32 Info: Dado atual do servidor mint:9000 => [21:57:35] sobrado
+22:00:32 Info: Esperando cliente informar opcao desejada
+22:00:33 Info: O cliente escolheu a opcao 0
+22:00:33 Info: Encerrando programa
