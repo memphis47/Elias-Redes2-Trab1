@@ -3,7 +3,7 @@ require './log.rb'
 require './serverClass.rb'
 
 #Numero de servidores em que o cliente ira se conectar.
-NSERVERS=1
+NSERVERS=3
 
 #Metodo que controla as conexoes que o cliente faz com o server.
 def connectionService(servers,open=0)
@@ -386,7 +386,7 @@ while (opc=menu.to_i)!=0 do
 	  end
 	  # Após terminar todos os envios fecha a conexão com os servers.
 	  connectionService(@servers)
-	  @dadosAtuais=receiveDatasFiles(@servers)
+	  #@dadosAtuais=receiveDatasFiles(@servers)
 	else
 		system "clear"
 		showMenuServer()
