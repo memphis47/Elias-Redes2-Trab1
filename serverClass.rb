@@ -1,3 +1,4 @@
+#Server class
 class Server
 	def name=(value)
 		@name=value
